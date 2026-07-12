@@ -88,7 +88,24 @@ input{
   font-size:17px;
   margin-bottom:15px;
 }
+.phone-box{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:15px;
+}
 
+.country{
+  background:#f1f1f1;
+  padding:16px 12px;
+  border-radius:15px;
+  font-size:16px;
+  white-space:nowrap;
+}
+
+.phone-box input{
+  margin-bottom:0;
+}
 button{
   width:100%;
   padding:18px;
@@ -153,10 +170,17 @@ Enter your mobile number to check available iPhone 15 Pro Max offers in South Af
 </div>
 
 <div class="phone-input">
+<div class="phone-box">
+
+<span class="country">
+🇿🇦 +27
+</span>
+
 <input 
 id="phone"
 type="tel"
-placeholder="+27 Enter your phone number">
+placeholder="Enter your phone number">
+
 </div>
 
 <button onclick="continueOffer()">
