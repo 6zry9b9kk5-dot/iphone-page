@@ -8,134 +8,92 @@
 
 <style>
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial, Helvetica, sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
 }
 
 body{
-  background:#f5f5f7;
-  color:#111;
+    background:#f5f5f5;
+    text-align:center;
+    color:#111;
 }
 
 .container{
-  max-width:430px;
-  margin:auto;
-  padding:20px;
+    max-width:420px;
+    margin:auto;
+    padding:25px 15px;
 }
 
-.card{
-  background:white;
-  border-radius:30px;
-  padding:25px 20px;
-  text-align:center;
-  box-shadow:0 10px 30px rgba(0,0,0,.12);
-}
-
-.badge{
-  display:inline-block;
-  background:#111;
-  color:white;
-  padding:8px 18px;
-  border-radius:50px;
-  font-size:14px;
-  margin-bottom:20px;
-}
-
-.phone{
-  width:250px;
-  max-width:90%;
-  margin:10px auto 20px;
-  display:block;
-  border-radius:35px;
+.flag{
+    width:55px;
+    margin-bottom:15px;
 }
 
 h1{
-  font-size:32px;
-  line-height:1.2;
-  margin-bottom:12px;
+    font-size:32px;
+    font-weight:800;
+    margin-bottom:10px;
 }
 
 h1 span{
-  color:#555;
+    color:#555;
 }
 
-.text{
-  color:#666;
-  font-size:17px;
-  line-height:1.5;
-  margin-bottom:20px;
+.subtitle{
+    font-size:18px;
+    color:#666;
+    margin-bottom:20px;
+}
+
+.phone{
+    width:260px;
+    max-width:90%;
+    margin:10px auto 20px;
+    display:block;
+    border-radius:35px;
 }
 
 .box{
-  background:#f1f1f1;
-  border-radius:18px;
-  padding:15px;
-  margin-bottom:20px;
+    background:white;
+    padding:20px;
+    border-radius:20px;
+    box-shadow:0 5px 20px #ddd;
 }
 
-.box p{
-  margin:8px 0;
-  font-size:16px;
+.people{
+    color:#d40000;
+    font-weight:bold;
+    margin-bottom:15px;
+    font-size:17px;
 }
 
 input{
-  width:100%;
-  padding:16px;
-  border-radius:15px;
-  border:1px solid #ddd;
-  font-size:17px;
-  margin-bottom:15px;
-}
-.phone-box{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  margin-bottom:15px;
+    width:100%;
+    padding:15px;
+    border-radius:12px;
+    border:1px solid #ccc;
+    font-size:16px;
+    margin-bottom:15px;
 }
 
-.country{
-  background:#f1f1f1;
-  padding:16px 12px;
-  border-radius:15px;
-  font-size:16px;
-  white-space:nowrap;
-}
-
-.phone-box input{
-  margin-bottom:0;
-}
 button{
-  width:100%;
-  padding:18px;
-  border:none;
-  border-radius:15px;
-  background:#0071e3;
-  color:white;
-  font-size:19px;
-  font-weight:bold;
-  cursor:pointer;
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:12px;
+    background:#000;
+    color:white;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
 }
 
-.features{
-  margin-top:25px;
-  text-align:left;
-}
-
-.features h3{
-  margin-bottom:12px;
-}
-
-.features p{
-  margin:10px 0;
-  color:#444;
-}
-
-.footer{
-  margin-top:20px;
-  font-size:12px;
-  color:#888;
+.small{
+    margin-top:15px;
+    color:#777;
+    font-size:13px;
 }
 
 </style>
@@ -145,63 +103,33 @@ button{
 
 <div class="container">
 
-<div class="card">
-
-<div class="badge">
-Limited iPhone 15 Pro Max Offer
-</div>
-
-
-<img class="phone" src="IMG_4804.jpeg" alt="iPhone 15 Pro Max">
-
+<img class="flag" src="https://flagcdn.com/w80/za.png">
 
 <h1>
-Get Your iPhone 15 Pro Max Offer
+Win iPhone 15 <span>Pro Max</span>
 </h1>
 
-<p class="text">
-Enter your mobile number to check available iPhone 15 Pro Max offers in South Africa.
+<p class="subtitle">
+Limited offer for South Africa 🇿🇦
 </p>
 
+<img class="phone" src="IMG_4804.jpeg">
+
 <div class="box">
-<p>✓ iPhone 15 Pro Max</p>
-<p>✓ Quick registration process</p>
-<p>✓ Continue to check availability</p>
-</div>
 
-<div class="phone-input">
-<div class="phone-box">
+<p class="people">
+🔥 Only 27 spots remaining! Hurry up
+</p>
 
-<span class="country">
-🇿🇦 +27
-</span>
+<input id="phone" type="tel" placeholder="+27 Enter your phone number">
 
-<input 
-id="phone"
-type="tel"
-placeholder="Enter your phone number">
-
-</div>
-
-<button onclick="continueOffer()">
-Check Offer Now
+<button onclick="go()">
+Claim Now
 </button>
 
-<div class="features">
-
-<h3>How it works</h3>
-
-<p>1. Enter your phone number</p>
-<p>2. Continue to the offer page</p>
-<p>3. Complete the required steps</p>
-
-</div>
-
-
-<div class="footer">
-By continuing, you agree to proceed to the offer page.
-</div>
-
+<p class="small">
+By continuing you agree to the terms and conditions.
+</p>
 
 </div>
 
@@ -210,26 +138,20 @@ By continuing, you agree to proceed to the offer page.
 
 <script>
 
-function continueOffer(){
+function go(){
 
-let phone = document.getElementById("phone").value;
+let number=document.getElementById("phone").value;
 
-if(phone.length < 7){
-alert("Please enter a valid phone number");
+if(number==""){
+alert("Enter your phone number");
 return;
 }
 
-
-let smartLink =
-"https://adsone.leadseagle.shop/?utm_medium=ad91ef12cbc61028dd54bd1f95ec531c80b2da20&utm_campaign=medoads1";
-
-
-window.location.href = smartLink;
+window.location.href="https://adsone.leadseagle.shop/?utm_medium=ad91ef12cbc61028dd54bd1f95ec531c80b2da20&utm_campaign=medoads1";
 
 }
 
 </script>
-
 
 </body>
 </html>
