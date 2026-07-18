@@ -1,169 +1,123 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>تعرّف على أشخاص جدد</title>
+<title>تعارف وشات</title>
 
-<link rel="stylesheet" href="style.css">
-
-</head>
-
-<body>
-
-
-<div class="bg"></div>
-
-
-<div class="card">
-
-
-<img class="hero-img" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800">
-
-
-<h1>
-قابل أشخاص جدد
-<span>وابدأ رحلة التعارف ✨</span>
-</h1>
-
-
-<p>
-انضم الآن وتعرّف على أشخاص يشاركونك اهتماماتك في السعودية والعراق
-</p>
-
-
-
-<div class="stats">
-
-<div>
-<b id="online">2,847</b>
-<small>متصل الآن</small>
-</div>
-
-
-<div>
-<b>24/7</b>
-<small>تواصل دائم</small>
-</div>
-
-
-<div>
-<b>100%</b>
-<small>موبايل</small>
-</div>
-
-
-</div>
-
-
-
-<div class="features">
-
-<div>💬 دردشة سهلة وسريعة</div>
-
-<div>❤️ تعرّف على أشخاص جدد</div>
-
-<div>🔒 تسجيل بسيط وآمن</div>
-
-</div>
-
-
-
-<div class="countries">
-
-<span>🇸🇦 السعودية</span>
-
-<span>🇮🇶 العراق</span>
-
-</div>
-
-
-
-<button onclick="go()">
-ابدأ الآن مجاناً 🚀
-</button>
-
-
-<p class="small">
-اضغط للانتقال والتسجيل
-</p>
-
-
-</div>
-
-
-
-<script src="script.js"></script>
-
-</body>
-</html>
+<style>
 
 *{
 box-sizing:border-box;
-font-family:Tajawal,Arial,sans-serif;
+font-family:Tahoma,Arial,sans-serif;
 }
-
 
 body{
-
 margin:0;
 min-height:100vh;
+background:
+radial-gradient(circle at 20% 10%,#ff168055,transparent 35%),
+radial-gradient(circle at 80% 30%,#7a00ff55,transparent 35%),
+#050008;
+color:#fff;
 display:flex;
-align-items:center;
 justify-content:center;
-background:#120018;
-overflow-x:hidden;
-
+align-items:center;
+padding:20px;
 }
 
 
+/* قلوب متحركة */
 
-.bg{
-
+.heart{
 position:fixed;
-width:500px;
-height:500px;
-background:#ff2f92;
-filter:blur(180px);
+bottom:-40px;
+font-size:22px;
+animation:rise 8s linear infinite;
 opacity:.5;
+}
 
+@keyframes rise{
+0%{
+transform:translateY(0);
+opacity:0;
+}
+20%{
+opacity:1;
+}
+100%{
+transform:translateY(-110vh);
+opacity:0;
+}
 }
 
 
+.box{
 
-.card{
-
-position:relative;
-width:95%;
+width:100%;
 max-width:430px;
 
-background:rgba(255,255,255,.12);
-
+background:rgba(255,255,255,.09);
 backdrop-filter:blur(20px);
 
 border-radius:35px;
+padding:25px;
 
-padding:22px;
+box-shadow:
+0 0 60px rgba(255,0,150,.35);
 
-text-align:center;
+animation:open .8s ease;
 
-color:white;
+}
 
-box-shadow:0 20px 60px rgba(0,0,0,.5);
+
+@keyframes open{
+
+from{
+opacity:0;
+transform:translateY(50px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
 
 }
 
 
 
-.hero-img{
+.image{
 
 width:100%;
-height:330px;
+height:280px;
 
 object-fit:cover;
 
 border-radius:30px;
+
+box-shadow:
+0 0 35px #ff4fa5;
+
+}
+
+
+
+.tag{
+
+display:inline-block;
+
+background:#ff1685;
+
+padding:10px 20px;
+
+border-radius:30px;
+
+margin-top:15px;
+
+font-weight:bold;
 
 }
 
@@ -171,7 +125,11 @@ border-radius:30px;
 
 h1{
 
-font-size:34px;
+font-size:32px;
+
+line-height:1.4;
+
+text-align:center;
 
 margin:20px 0 10px;
 
@@ -180,54 +138,39 @@ margin:20px 0 10px;
 
 h1 span{
 
-display:block;
-
-color:#ff6bb8;
+color:#ff65b7;
 
 }
 
 
 
-p{
+.text{
 
-font-size:17px;
+text-align:center;
+
+color:#ddd;
 
 line-height:1.8;
 
-color:#eee;
+font-size:16px;
 
 }
 
 
 
-.stats{
 
-display:flex;
+.form{
 
-justify-content:space-between;
-
-margin:20px 0;
+margin-top:25px;
 
 }
 
 
-.stats div{
-
-background:rgba(255,255,255,.1);
-
-padding:12px;
-
-border-radius:18px;
-
-width:31%;
-
-}
-
-
-
-.stats b{
+label{
 
 display:block;
+
+margin-bottom:10px;
 
 font-size:18px;
 
@@ -235,41 +178,21 @@ font-size:18px;
 
 
 
-.stats small{
+input{
 
-font-size:11px;
+width:100%;
 
-}
-
-
-
-.features div{
-
-background:rgba(255,255,255,.1);
-
-padding:13px;
-
-border-radius:18px;
-
-margin:10px 0;
-
-}
-
-
-
-.countries span{
-
-display:inline-block;
-
-background:white;
-
-color:#333;
-
-padding:8px 15px;
+padding:17px;
 
 border-radius:20px;
 
-margin:5px;
+border:none;
+
+font-size:18px;
+
+text-align:center;
+
+outline:none;
 
 }
 
@@ -279,7 +202,7 @@ button{
 
 width:100%;
 
-margin-top:15px;
+margin-top:18px;
 
 padding:18px;
 
@@ -287,7 +210,7 @@ border:0;
 
 border-radius:50px;
 
-background:linear-gradient(45deg,#ff267f,#ff5db1);
+background:linear-gradient(45deg,#ff006f,#ff70bb);
 
 color:white;
 
@@ -297,41 +220,174 @@ font-weight:bold;
 
 cursor:pointer;
 
-box-shadow:0 10px 30px rgba(255,38,127,.5);
+box-shadow:
+0 0 30px #ff006f;
+
+animation:pulse 2s infinite;
+
+}
+
+
+@keyframes pulse{
+
+50%{
+transform:scale(1.04);
+}
 
 }
 
 
 
-button:active{
+.features{
 
-transform:scale(.96);
+margin-top:25px;
 
 }
 
 
 
-.small{
+.item{
+
+background:rgba(255,255,255,.08);
+
+padding:14px;
+
+border-radius:18px;
+
+margin:10px 0;
+
+}
+
+
+
+.rating{
+
+text-align:center;
+
+color:#ffd700;
+
+font-size:25px;
+
+margin-top:25px;
+
+}
+
+
+
+.note{
+
+text-align:center;
 
 font-size:12px;
 
-opacity:.8;
+color:#aaa;
 
 }
+
+</style>
+
+</head>
+
+<body>
+
+
+<div class="heart" style="left:15%">💖</div>
+<div class="heart" style="left:50%;animation-delay:2s">💜</div>
+<div class="heart" style="left:80%;animation-delay:4s">💖</div>
+
+
+
+<div class="box">
+
+
+<img class="image"
+src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=900">
+
+
+<div class="tag">
+🔥 تعارف وشات
+</div>
+
+
+<h1>
+💖 تعرّف على أشخاص جدد
+<span>وابدأ محادثتك الآن</span>
+</h1>
+
+
+<p class="text">
+اكتشف مجتمعًا جديدًا، كوّن صداقات، وتواصل مع أشخاص يشاركونك نفس الاهتمامات. التسجيل سريع وسهل.
+</p>
+
+
+
+<div class="form">
+
+<label>
+📱 اكتب رقم هاتفك للانضمام
+</label>
+
+<input type="tel" placeholder="05XXXXXXXX">
+
+
+
+<button onclick="go()">
+ابدأ الآن ❤️
+</button>
+
+
+</div>
+
+
+
+
+<div class="features">
+
+<div class="item">
+💬 محادثات خاصة
+</div>
+
+<div class="item">
+⚡ تسجيل سريع خلال دقائق
+</div>
+
+<div class="item">
+🔒 خصوصية وأمان
+</div>
+
+<div class="item">
+✨ تجربة مصممة للموبايل
+</div>
+
+</div>
+
+
+
+<div class="rating">
+⭐⭐⭐⭐⭐
+</div>
+
+
+<p class="note">
+بالضغط على الزر تنتقل إلى صفحة التسجيل
+</p>
+
+
+</div>
+
+
+
+<script>
+
 function go(){
 
-window.location.href="https://adsone.leadseagle.shop/?utm_medium=ad91ef12cbc61028dd54bd1f95ec531c80b2da20&utm_campaign=medoads1";
+window.location.href=
+"https://adsone.leadseagle.shop/?utm_medium=ad91ef12cbc61028dd54bd1f95ec531c80b2da20&utm_campaign=medoads1";
 
 }
 
+</script>
 
 
-let num=document.getElementById("online");
-
-setInterval(()=>{
-
-let value=Math.floor(Math.random()*200)+2800;
-
-num.innerHTML=value.toLocaleString();
-
-},3000);
+</body>
+</html>
