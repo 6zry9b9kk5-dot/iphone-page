@@ -1,157 +1,337 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>iPhone 15 Pro Max Offer</title>
+<title>تعرّف على أشخاص جدد</title>
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
-}
+<link rel="stylesheet" href="style.css">
 
-body{
-    background:#f5f5f5;
-    text-align:center;
-    color:#111;
-}
-
-.container{
-    max-width:420px;
-    margin:auto;
-    padding:25px 15px;
-}
-
-.flag{
-    width:55px;
-    margin-bottom:15px;
-}
-
-h1{
-    font-size:32px;
-    font-weight:800;
-    margin-bottom:10px;
-}
-
-h1 span{
-    color:#555;
-}
-
-.subtitle{
-    font-size:18px;
-    color:#666;
-    margin-bottom:20px;
-}
-
-.phone{
-    width:260px;
-    max-width:90%;
-    margin:10px auto 20px;
-    display:block;
-    border-radius:35px;
-}
-
-.box{
-    background:white;
-    padding:20px;
-    border-radius:20px;
-    box-shadow:0 5px 20px #ddd;
-}
-
-.people{
-    color:#d40000;
-    font-weight:bold;
-    margin-bottom:15px;
-    font-size:17px;
-}
-
-input{
-    width:100%;
-    padding:15px;
-    border-radius:12px;
-    border:1px solid #ccc;
-    font-size:16px;
-    margin-bottom:15px;
-}
-
-button{
-    width:100%;
-    padding:16px;
-    border:none;
-    border-radius:12px;
-    background:#000;
-    color:white;
-    font-size:18px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.small{
-    margin-top:15px;
-    color:#777;
-    font-size:13px;
-}
-
-</style>
 </head>
 
 <body>
 
-<div class="container">
 
-<img class="flag" src="https://flagcdn.com/w80/za.png">
+<div class="bg"></div>
+
+
+<div class="card">
+
+
+<img class="hero-img" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800">
+
 
 <h1>
-Win iPhone 15 <span>Pro Max</span>
+قابل أشخاص جدد
+<span>وابدأ رحلة التعارف ✨</span>
 </h1>
 
-<p class="subtitle">
-Limited offer for South Africa 🇿🇦
+
+<p>
+انضم الآن وتعرّف على أشخاص يشاركونك اهتماماتك في السعودية والعراق
 </p>
 
-<img class="phone" src="IMG_4804.jpeg">
 
-<div class="box">
 
-<p class="people">
-🔥 Only 27 spots remaining! Hurry up
-</p>
+<div class="stats">
 
-<input id="phone" type="tel" placeholder="+27 Enter your phone number">
+<div>
+<b id="online">2,847</b>
+<small>متصل الآن</small>
+</div>
+
+
+<div>
+<b>24/7</b>
+<small>تواصل دائم</small>
+</div>
+
+
+<div>
+<b>100%</b>
+<small>موبايل</small>
+</div>
+
+
+</div>
+
+
+
+<div class="features">
+
+<div>💬 دردشة سهلة وسريعة</div>
+
+<div>❤️ تعرّف على أشخاص جدد</div>
+
+<div>🔒 تسجيل بسيط وآمن</div>
+
+</div>
+
+
+
+<div class="countries">
+
+<span>🇸🇦 السعودية</span>
+
+<span>🇮🇶 العراق</span>
+
+</div>
+
+
 
 <button onclick="go()">
-Claim Now
+ابدأ الآن مجاناً 🚀
 </button>
 
+
 <p class="small">
-By continuing you agree to the terms and conditions.
+اضغط للانتقال والتسجيل
 </p>
 
-</div>
 
 </div>
 
 
-<script>
 
-function go(){
+<script src="script.js"></script>
 
-let number=document.getElementById("phone").value;
+</body>
+</html>
 
-if(number==""){
-alert("Enter your phone number");
-return;
+*{
+box-sizing:border-box;
+font-family:Tajawal,Arial,sans-serif;
 }
+
+
+body{
+
+margin:0;
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#120018;
+overflow-x:hidden;
+
+}
+
+
+
+.bg{
+
+position:fixed;
+width:500px;
+height:500px;
+background:#ff2f92;
+filter:blur(180px);
+opacity:.5;
+
+}
+
+
+
+.card{
+
+position:relative;
+width:95%;
+max-width:430px;
+
+background:rgba(255,255,255,.12);
+
+backdrop-filter:blur(20px);
+
+border-radius:35px;
+
+padding:22px;
+
+text-align:center;
+
+color:white;
+
+box-shadow:0 20px 60px rgba(0,0,0,.5);
+
+}
+
+
+
+.hero-img{
+
+width:100%;
+height:330px;
+
+object-fit:cover;
+
+border-radius:30px;
+
+}
+
+
+
+h1{
+
+font-size:34px;
+
+margin:20px 0 10px;
+
+}
+
+
+h1 span{
+
+display:block;
+
+color:#ff6bb8;
+
+}
+
+
+
+p{
+
+font-size:17px;
+
+line-height:1.8;
+
+color:#eee;
+
+}
+
+
+
+.stats{
+
+display:flex;
+
+justify-content:space-between;
+
+margin:20px 0;
+
+}
+
+
+.stats div{
+
+background:rgba(255,255,255,.1);
+
+padding:12px;
+
+border-radius:18px;
+
+width:31%;
+
+}
+
+
+
+.stats b{
+
+display:block;
+
+font-size:18px;
+
+}
+
+
+
+.stats small{
+
+font-size:11px;
+
+}
+
+
+
+.features div{
+
+background:rgba(255,255,255,.1);
+
+padding:13px;
+
+border-radius:18px;
+
+margin:10px 0;
+
+}
+
+
+
+.countries span{
+
+display:inline-block;
+
+background:white;
+
+color:#333;
+
+padding:8px 15px;
+
+border-radius:20px;
+
+margin:5px;
+
+}
+
+
+
+button{
+
+width:100%;
+
+margin-top:15px;
+
+padding:18px;
+
+border:0;
+
+border-radius:50px;
+
+background:linear-gradient(45deg,#ff267f,#ff5db1);
+
+color:white;
+
+font-size:22px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+box-shadow:0 10px 30px rgba(255,38,127,.5);
+
+}
+
+
+
+button:active{
+
+transform:scale(.96);
+
+}
+
+
+
+.small{
+
+font-size:12px;
+
+opacity:.8;
+
+}
+function go(){
 
 window.location.href="https://adsone.leadseagle.shop/?utm_medium=ad91ef12cbc61028dd54bd1f95ec531c80b2da20&utm_campaign=medoads1";
 
 }
 
-</script>
 
-</body>
-</html>
+
+let num=document.getElementById("online");
+
+setInterval(()=>{
+
+let value=Math.floor(Math.random()*200)+2800;
+
+num.innerHTML=value.toLocaleString();
+
+},3000);
