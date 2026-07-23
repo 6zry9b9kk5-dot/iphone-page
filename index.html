@@ -1,228 +1,223 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>تعارف وشات</title>
+<title>تريد تتونس؟</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
 
 <style>
+
 *{
-box-sizing:border-box;
-font-family:Tahoma,Arial;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Cairo',sans-serif;
 }
 
 body{
-margin:0;
-min-height:100vh;
-background:
-radial-gradient(circle at top,#ff176f55,transparent 35%),
-radial-gradient(circle at bottom,#7600ff55,transparent 35%),
-#050006;
-color:#fff;
-display:flex;
-justify-content:center;
-align-items:center;
-padding:15px;
+
+    min-height:100vh;
+
+    background:
+    radial-gradient(circle at top,#ffb6e6,#ff4fa3,#7b2cbf);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+
 }
+
 
 .card{
-width:100%;
-max-width:430px;
-background:#ffffff12;
-backdrop-filter:blur(20px);
-border-radius:35px;
-padding:22px;
-box-shadow:0 0 60px #ff008855;
+
+    width:100%;
+    max-width:430px;
+
+    background:rgba(255,255,255,.18);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.35);
+
+    border-radius:35px;
+
+    padding:30px;
+
+    text-align:center;
+
+    box-shadow:0 20px 60px rgba(100,0,80,.4);
+
 }
 
-.hero{
-width:100%;
-height:300px;
-object-fit:cover;
-border-radius:30px;
-box-shadow:0 0 35px #ff3c9d;
-}
-
-.badge{
-display:inline-block;
-margin-top:15px;
-background:#ff167f;
-padding:8px 20px;
-border-radius:30px;
-font-weight:bold;
-}
-
-h1{
-font-size:32px;
-text-align:center;
-line-height:1.4;
-}
-
-h1 span{
-color:#ff6ab9;
-}
-
-p{
-text-align:center;
-color:#ddd;
-line-height:1.8;
-}
 
 .profile{
-display:flex;
-gap:10px;
-margin:20px 0;
+
+    width:280px;
+    height:280px;
+
+    object-fit:cover;
+
+    border-radius:35px;
+
+    border:6px solid white;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+
+    margin-bottom:25px;
+
 }
 
-.person{
-flex:1;
-background:#ffffff12;
-border-radius:20px;
-padding:10px;
-text-align:center;
-font-size:13px;
+
+h1{
+
+    color:white;
+
+    font-size:38px;
+
+    font-weight:900;
+
 }
 
-.person img{
-width:65px;
-height:65px;
-border-radius:50%;
-object-fit:cover;
+
+.text{
+
+    color:white;
+
+    font-size:17px;
+
+    line-height:2;
+
+    margin-top:15px;
+
 }
 
-.online{
-color:#35ff8b;
-margin-top:5px;
+
+.age{
+
+    margin-top:25px;
+
+    background:rgba(255,255,255,.2);
+
+    padding:15px;
+
+    border-radius:20px;
+
+    color:white;
+
+    font-size:21px;
+
+    font-weight:bold;
+
 }
 
-.box{
-margin-top:20px;
+
+.btn{
+
+    display:block;
+
+    margin-top:25px;
+
+    background:linear-gradient(45deg,#ff005c,#ff4da6);
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:20px;
+
+    border-radius:50px;
+
+    font-size:23px;
+
+    font-weight:900;
+
+    box-shadow:0 10px 30px rgba(255,0,100,.5);
+
+    animation:pulse 1.5s infinite;
+
 }
 
-input{
-width:100%;
-padding:17px;
-border:0;
-border-radius:20px;
-font-size:17px;
-text-align:center;
+
+.note{
+
+    margin-top:20px;
+
+    color:white;
+
+    font-size:13px;
+
+    opacity:.8;
+
 }
 
-button{
-width:100%;
-margin-top:15px;
-padding:18px;
-border:0;
-border-radius:50px;
-background:linear-gradient(45deg,#ff006f,#ff70bb);
-color:#fff;
-font-size:22px;
-font-weight:bold;
-box-shadow:0 0 30px #ff006f;
+
+@keyframes pulse{
+
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.06);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+
 }
 
-.feature{
-background:#ffffff12;
-padding:14px;
-border-radius:18px;
-margin:10px 0;
-}
-
-.stars{
-text-align:center;
-color:#ffd700;
-font-size:24px;
-margin-top:20px;
-}
 </style>
 
 </head>
 
+
 <body>
+
 
 <div class="card">
 
-<img class="hero" src="IMG_4882.jpeg">
 
-
-<div class="badge">🔥 تعارف وشات</div>
+<img class="profile"
+src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=900"
+alt="photo">
 
 
 <h1>
-💖 تريد أن تتونس وتقضي وقتًا ممتعًا؟
-<br>
-<span>ابدأ محادثتك الآن</span>
+❤️ تريد تتونس؟
 </h1>
 
 
-<p>
-دردشة ممتعة، تعارف جديد، وأجواء مختلفة للتواصل مع أشخاص جدد.
+<p class="text">
+  🫦💋ابدأ سهرتك والمتعههه ة.
 </p>
 
-<div class="profile">
 
-<div class="person">
-<img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300">
-<br>
-متصل الآن
-<div class="online">🟢 متاح</div>
-</div>
-
-<div class="person">
-<img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300">
-<br>
-متصل الآن
-<div class="online">🟢 متاح</div>
-</div>
-
-<div class="person">
-<img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=300">
-<br>
-متصل الآن
-<div class="online">🟢 متاح</div>
-</div>
-
+<div class="age">
+🔞 هل عمرك 18 سنة أو أكثر؟
 </div>
 
 
+<a href="https://adsone.leadseagle.shop/?utm_medium=ad91ef12cbc61028dd54bd1f95ec531c80b2da20&utm_campaign=medoads1" class="btn">
+🫦 اضغط لتبدأ
+</a>
 
-<div class="feature">
-💬 محادثات خاصة
-</div>
 
-<div class="feature">
-✨ تعارف وتواصل بسهولة
-</div>
-
-<div class="feature">
-⚡ التسجيل سريع
+<div class="note">
+ 🫦🫦 تعارف  
 </div>
 
 
-<div class="box">
-
-<input type="tel" placeholder="اكتب رقم هاتفك">
-
-<button onclick="go()">
-ابدأ الآن ❤️
-</button>
-
 </div>
 
-
-<div class="stars">
-⭐⭐⭐⭐⭐
-</div>
-
-</div>
-
-
-<script>
-function go(){
-window.location.href="https://adsone.leadseagle.shop/?utm_medium=ad91ef12cbc61028dd54bd1f95ec531c80b2da20&utm_campaign=medoads1";
-}
-</script>
 
 </body>
 </html>
+
+
