@@ -1,226 +1,228 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>تريد تدلع للجدين فقد💄🫦؟</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+<title>تبي تستأنس وتتونس؟</title>
 
 <style>
-
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Cairo',sans-serif;
+box-sizing:border-box;
+}
+
+html,body{
+margin:0;
+padding:0;
+min-height:100%;
+font-family:Tahoma,Arial,sans-serif;
 }
 
 body{
-
-    min-height:100vh;
-
-    background:
-    radial-gradient(circle at top,#ffb6e6,#ff4fa3,#7b2cbf);
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    padding:20px;
-
+min-height:100vh;
+background:#111 url("background.jpg") center top/cover no-repeat fixed;
+position:relative;
+color:#111;
 }
 
-
-.card{
-
-    width:100%;
-    max-width:430px;
-
-    background:rgba(255,255,255,.18);
-
-    backdrop-filter:blur(20px);
-
-    border:1px solid rgba(255,255,255,.35);
-
-    border-radius:35px;
-
-    padding:30px;
-
-    text-align:center;
-
-    box-shadow:0 20px 60px rgba(100,0,80,.4);
-
+body:before{
+content:"";
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.04);
+z-index:0;
+pointer-events:none;
 }
 
-
-.profile{
-
-    width:280px;
-    height:280px;
-
-    object-fit:cover;
-
-    border-radius:35px;
-
-    border:6px solid white;
-
-    box-shadow:0 15px 40px rgba(0,0,0,.25);
-
-    margin-bottom:25px;
-
+.wrap{
+position:relative;
+z-index:1;
+width:min(520px,78%);
+margin:auto;
+padding:48px 0 40px;
 }
 
-
-h1{
-
-    color:white;
-
-    font-size:38px;
-
-    font-weight:900;
-
+.box{
+background:rgba(255,255,255,.95);
+border:2px solid #111;
+box-shadow:0 5px 16px rgba(0,0,0,.25);
+padding:9px 11px;
+margin:0 auto 13px;
+text-align:center;
+border-radius:4px;
 }
 
-
-.text{
-
-    color:white;
-
-    font-size:17px;
-
-    line-height:2;
-
-    margin-top:15px;
-
+.title{
+font-size:clamp(19px,4.8vw,30px);
+font-weight:900;
+line-height:1.35;
+margin:0;
 }
 
-
-.age{
-
-    margin-top:25px;
-
-    background:rgba(255,255,255,.2);
-
-    padding:15px;
-
-    border-radius:20px;
-
-    color:white;
-
-    font-size:21px;
-
-    font-weight:bold;
-
+.subtitle{
+font-size:clamp(16px,4vw,24px);
+font-weight:800;
+line-height:1.4;
+margin:0;
 }
 
-
-.btn{
-
-    display:block;
-
-    margin-top:25px;
-
-    background:linear-gradient(45deg,#ff005c,#ff4da6);
-
-    color:white;
-
-    text-decoration:none;
-
-    padding:20px;
-
-    border-radius:50px;
-
-    font-size:23px;
-
-    font-weight:900;
-
-    box-shadow:0 10px 30px rgba(255,0,100,.5);
-
-    animation:pulse 1.5s infinite;
-
+.fire{
+font-size:25px;
+letter-spacing:4px;
+margin:0;
 }
 
+.cta{
+font-size:clamp(15px,3.7vw,22px);
+font-weight:900;
+line-height:1.4;
+margin:0;
+}
+
+.form{
+padding:13px 12px;
+background:rgba(255,255,255,.97);
+border-radius:9px;
+}
+
+label{
+display:block;
+font-size:15px;
+font-weight:900;
+margin-bottom:6px;
+text-align:right;
+}
+
+input{
+width:100%;
+height:48px;
+border:2px solid #111;
+border-radius:8px;
+padding:0 12px;
+font-size:15px;
+text-align:right;
+outline:none;
+background:#fff;
+}
+
+button{
+width:100%;
+height:50px;
+margin-top:8px;
+border:0;
+border-radius:8px;
+background:#111;
+color:#fff;
+font-size:17px;
+font-weight:900;
+cursor:pointer;
+}
 
 .note{
-
-    margin-top:20px;
-
-    color:white;
-
-    font-size:13px;
-
-    opacity:.8;
-
+font-size:10px;
+color:#555;
+margin:7px 0 0;
 }
 
+@media(max-width:500px){
 
-@keyframes pulse{
-
-    0%{
-        transform:scale(1);
-    }
-
-    50%{
-        transform:scale(1.06);
-    }
-
-    100%{
-        transform:scale(1);
-    }
-
+.wrap{
+width:78%;
+padding-top:30px;
 }
 
+.box{
+margin-bottom:10px;
+padding:7px 8px;
+}
+
+.form{
+padding:11px 9px;
+}
+
+}
 </style>
-
 </head>
-
 
 <body>
 
+<div class="wrap">
 
-<div class="card">
+<div class="box">
+<p class="title">انت تبي تستأنس وتتونس</p>
+</div>
 
+<div class="box">
+<p class="subtitle">وتروق معه؟ 😉</p>
+</div>
 
-<img src="IMG_4993.gif" class="profile" alt="">
+<div class="box">
+<div class="fire">🔥 🔥 🔥</div>
+<p class="subtitle">في عروض مرا حريقة</p>
+</div>
 
+<div class="box">
+<p class="cta">اضغط التعرف على المزيد ودش قروب</p>
+</div>
 
-<h1>
-❤️ تريد تدلع ؟
-</h1>
+<div class="box">
+<p class="cta">🔥 الواتساب لعندنا</p>
+</div>
 
+<div class="box form">
 
-<p class="text">
-     
-    
-اول تعامل مجاني تماما لاثبات الثقه 💄💯
-لتاكد من انك جاد اضغط علي زر تحويلك لواتساب واكتب رقمك  حياتي 
-    🫦👙وتعالا ادلعك 💯👙💄
-    
+<label for="phone">رقم الواتساب</label>
+
+<input
+id="phone"
+type="tel"
+inputmode="tel"
+placeholder="اكتب رقم الواتساب"
+required
+>
+
+<button type="button" onclick="go()">
+🔥 تعرّف على المزيد
+</button>
+
+<p class="note">
+سيتم تحويلك للخطوة التالية بعد الضغط.
 </p>
 
-
-<div class="age">
-🔞  عمرك 18 سنة أو أكثر؟
 </div>
 
-
-<a href="https://adsone.leadseagle.shop/?utm_medium=ad91ef12cbc61028dd54bd1f95ec531c80b2da20&utm_campaign=medoads1" class="btn">
-🫦👙اضغط هناواكتب رقمك  لتحويلك واتساب مباشر👙 
-</a>
-
-
-<div class="note">
- 🫦🫦 💯تعارف للجادين فقد💄 
 </div>
+<script>
 
+function go(){
 
-</div>
+const phone =
+document.getElementById("phone").value.trim();
 
+if(!phone){
+
+alert("اكتب رقم الواتساب أولاً");
+
+return;
+
+}
+
+const smartLink =
+"https://adsone.leadseagle.shop/?utm_medium=ad91ef12cbc61028dd54bd1f95ec531c80b2da20&utm_campaign=medoads1";
+
+const sep =
+smartLink.includes("?")
+? "&"
+: "?";
+
+window.location.href =
+smartLink +
+sep +
+"phone=" +
+encodeURIComponent(phone);
+
+}
+
+</script>
 
 </body>
 </html>
-
-
