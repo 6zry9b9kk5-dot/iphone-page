@@ -8,200 +8,188 @@
 
 <style>
 
-*{
-    box-sizing:border-box;
+* {
+    box-sizing: border-box;
 }
 
-html,body{
-    margin:0;
-    padding:0;
-    min-height:100%;
-    font-family:Tahoma,Arial,sans-serif;
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    font-family: Tahoma, Arial, sans-serif;
 }
 
-body{
-    min-height:100vh;
+body {
+    min-height: 100vh;
 
-    /* نفس صورة البوست */
-    bbackground-image:url("5AEF74AF-2125-4C6A-BED0-54F4E0599B7F.png");
-    background-position:center top;
-    background-size:cover;
-    background-repeat:no-repeat;
-    background-attachment:fixed;
+    background-image: url("5AEF74AF-2125-4C6A-BED0-54F4E0599B7F.png");
+    background-position: center top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 
-    position:relative;
-    color:#111;
+    position: relative;
+    color: #111;
 }
 
-/* طبقة خفيفة جدًا عشان الخلفية تفضل واضحة */
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.03);
-    z-index:0;
-    pointer-events:none;
+/* طبقة خفيفة جدًا فوق الصورة */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.03);
+    z-index: 0;
+    pointer-events: none;
 }
 
-.wrap{
-    position:relative;
-    z-index:1;
+.wrap {
+    position: relative;
+    z-index: 1;
 
-    width:min(520px,78%);
-    margin:auto;
+    width: min(520px, 78%);
+    margin: auto;
 
-    padding:48px 0 40px;
+    padding: 48px 0 40px;
 }
 
-.box{
-    background:rgba(255,255,255,.95);
+.box {
+    background: rgba(255,255,255,0.95);
 
-    border:2px solid #111;
+    border: 2px solid #111;
 
     box-shadow:
-        0 5px 16px rgba(0,0,0,.25);
+        0 5px 16px rgba(0,0,0,0.25);
 
-    padding:9px 11px;
+    padding: 9px 11px;
 
-    margin:0 auto 13px;
+    margin: 0 auto 13px;
 
-    text-align:center;
+    text-align: center;
 
-    border-radius:4px;
+    border-radius: 4px;
 }
 
-.title{
-    font-size:clamp(19px,4.8vw,30px);
+.title {
+    font-size: clamp(19px, 4.8vw, 30px);
 
-    font-weight:900;
+    font-weight: 900;
 
-    line-height:1.35;
+    line-height: 1.35;
 
-    margin:0;
+    margin: 0;
 }
 
-.subtitle{
-    font-size:clamp(16px,4vw,24px);
+.subtitle {
+    font-size: clamp(16px, 4vw, 24px);
 
-    font-weight:800;
+    font-weight: 800;
 
-    line-height:1.4;
+    line-height: 1.4;
 
-    margin:0;
+    margin: 0;
 }
 
-.fire{
-    font-size:25px;
+.fire {
+    font-size: 25px;
 
-    letter-spacing:4px;
+    letter-spacing: 4px;
 
-    margin:0;
+    margin: 0;
 }
 
-.cta{
-    font-size:clamp(15px,3.7vw,22px);
+.cta {
+    font-size: clamp(15px, 3.7vw, 22px);
 
-    font-weight:900;
+    font-weight: 900;
 
-    line-height:1.4;
+    line-height: 1.4;
 
-    margin:0;
+    margin: 0;
 }
 
-/* زر التعرف على المزيد */
-.more-box{
-    padding:10px;
+.more-box {
+    padding: 10px;
 }
 
-.more-button{
-    display:block;
+.more-button {
+    display: block;
 
-    width:100%;
+    width: 100%;
 
-    height:52px;
+    height: 52px;
 
-    border:0;
+    border: 0;
 
-    border-radius:8px;
+    border-radius: 8px;
 
-    background:#111;
+    background: #111;
 
-    color:#fff;
+    color: #fff;
 
-    font-size:18px;
+    font-size: 18px;
 
-    font-weight:900;
+    font-weight: 900;
 
-    text-decoration:none;
+    text-decoration: none;
 
-    line-height:52px;
+    line-height: 52px;
 
-    cursor:pointer;
+    cursor: pointer;
 
-    box-shadow:0 4px 10px rgba(0,0,0,.25);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+
+    transition: transform 0.15s ease;
 }
 
-.more-button:active{
-    transform:scale(.98);
+.more-button:active {
+    transform: scale(0.98);
 }
 
+@media (max-width: 500px) {
 
-/* الموبايل */
-@media(max-width:500px){
-
-    .wrap{
-        width:78%;
-        padding-top:30px;
+    .wrap {
+        width: 78%;
+        padding-top: 30px;
     }
 
-    .box{
-        margin-bottom:10px;
-        padding:7px 8px;
+    .box {
+        margin-bottom: 10px;
+        padding: 7px 8px;
     }
 
-    .more-box{
-        padding:8px;
+    .more-box {
+        padding: 8px;
     }
 
-    .more-button{
-        height:48px;
-        line-height:48px;
-        font-size:16px;
+    .more-button {
+        height: 48px;
+        line-height: 48px;
+        font-size: 16px;
     }
+
 }
 
 </style>
 </head>
 
-
 <body>
 
 <div class="wrap">
 
-
-    <!-- السطر الأول -->
     <div class="box">
-
         <p class="title">
             انت تبي تستأنس وتتونس
         </p>
-
     </div>
 
-
-    <!-- السطر الثاني -->
     <div class="box">
-
         <p class="subtitle">
             وتروق معه؟ 😉
         </p>
-
     </div>
 
-
-    <!-- العروض -->
     <div class="box">
-
         <div class="fire">
             🔥 🔥 🔥
         </div>
@@ -209,31 +197,20 @@ body::before{
         <p class="subtitle">
             في عروض مرا حريقة
         </p>
-
     </div>
 
-
-    <!-- التعرف -->
     <div class="box">
-
         <p class="cta">
             اضغط التعرف على المزيد ودش قروب
         </p>
-
     </div>
 
-
-    <!-- الواتساب -->
     <div class="box">
-
         <p class="cta">
             🔥 الواتساب لعندنا
         </p>
-
     </div>
 
-
-    <!-- الزر فقط -->
     <div class="box more-box">
 
         <a
@@ -244,7 +221,6 @@ body::before{
         </a>
 
     </div>
-
 
 </div>
 
