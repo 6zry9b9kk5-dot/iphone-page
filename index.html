@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
   <title>Watch Now</title>
 
@@ -13,11 +13,12 @@
       box-sizing: border-box;
     }
 
-    html, body {
+    html,
+    body {
       width: 100%;
       height: 100%;
       overflow: hidden;
-      background: #12030b;
+      background: #000;
     }
 
     .page {
@@ -25,26 +26,22 @@
       width: 100%;
       height: 100dvh;
       overflow: hidden;
+    }
 
-      background:
-        linear-gradient(
-          rgba(20, 0, 12, 0.12),
-          rgba(20, 0, 12, 0.42)
-        ),
-        url("https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1200&q=90")
-        center center / cover no-repeat;
+    .background {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
     }
 
     .overlay {
       position: absolute;
       inset: 0;
-      background:
-        linear-gradient(
-          180deg,
-          rgba(0,0,0,0.05),
-          rgba(0,0,0,0.16) 45%,
-          rgba(0,0,0,0.50)
-        );
+      background: rgba(0, 0, 0, 0.18);
     }
 
     .watch-button {
@@ -53,38 +50,45 @@
       left: 50%;
       transform: translate(-50%, -50%);
 
-      width: 245px;
-      height: 74px;
+      width: 280px;
+      height: 82px;
 
       display: flex;
       align-items: center;
       justify-content: center;
 
-      background: rgba(255,255,255,0.97);
-      color: #111;
+      background: #ffffff;
+      color: #111111;
 
-      border-radius: 40px;
+      border-radius: 45px;
 
       font-family: Arial, sans-serif;
-      font-size: 25px;
+      font-size: 28px;
       font-weight: 700;
 
       text-decoration: none;
 
-      box-shadow: 0 10px 35px rgba(0,0,0,0.50);
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.45);
 
       -webkit-tap-highlight-color: transparent;
+      transition: transform 0.15s ease;
     }
 
     .watch-button:active {
-      transform: translate(-50%, -50%) scale(0.93);
+      transform: translate(-50%, -50%) scale(0.94);
     }
   </style>
 </head>
 
 <body>
 
-  <div class="page">
+  <main class="page">
+
+    <img
+      class="background"
+      src="./IMG_5656.jpeg"
+      alt=""
+    >
 
     <div class="overlay"></div>
 
@@ -95,7 +99,7 @@
       Watch Now
     </a>
 
-  </div>
+  </main>
 
 </body>
 </html>
