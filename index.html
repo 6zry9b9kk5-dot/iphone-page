@@ -182,11 +182,17 @@ h1{
   direction:rtl;
 }
 
-.urdu{
+.np{
   font-family:
-    "Noto Nastaliq Urdu",
-    "Noto Naskh Arabic",
     Arial,
+    "Noto Sans Devanagari",
+    sans-serif;
+}
+
+.bn{
+  font-family:
+    Arial,
+    "Noto Sans Bengali",
     sans-serif;
 }
 
@@ -244,137 +250,307 @@ const SMARTLINK =
 "https://adsone.leadseagle.shop/?utm_medium=ad91ef12cbc61028dd54bd1f95ec531c80b2da20&utm_campaign=medoads1";
 
 
+/*
+========================================
+الدول الأساسية
+========================================
+*/
+
 const countries = {
 
+/* 🇧🇩 Bangladesh */
 BD:{
   lang:"bn",
-  direction:"rtl",
+  direction:"ltr",
+  className:"bn",
   badge:"18+",
-  title:"আপনার জন্য কিছু বিশেষ আছে",
+  title:"আপনার জন্য বিশেষ কিছু আছে",
   description:"আরও দেখতে নিচের বাটনে ক্লিক করুন।",
   button:"আরও দেখুন"
 },
 
+/* 🇵🇭 Philippines */
 PH:{
   lang:"fil",
   direction:"ltr",
+  className:"",
   badge:"18+",
   title:"May espesyal para sa iyo",
   description:"I-click ang button sa ibaba para makita pa.",
   button:"Tingnan pa"
 },
 
-PK:{
-  lang:"ur",
-  direction:"rtl",
+/* 🇳🇵 Nepal */
+NP:{
+  lang:"ne",
+  direction:"ltr",
+  className:"np",
   badge:"18+",
-  title:"آپ کے لیے کچھ خاص ہے",
-  description:"مزید دیکھنے کے لیے نیچے والے بٹن پر کلک کریں۔",
-  button:"مزید دیکھیں"
+  title:"तपाईंका लागि केही विशेष छ",
+  description:"थप हेर्न तलको बटनमा क्लिक गर्नुहोस्।",
+  button:"थप हेर्नुहोस्"
+},
+
+/* 🇲🇱 Mali */
+ML:{
+  lang:"fr",
+  direction:"ltr",
+  className:"",
+  badge:"18+",
+  title:"Quelque chose de spécial vous attend",
+  description:"Cliquez sur le bouton ci-dessous pour continuer.",
+  button:"Voir plus"
+},
+
+/* 🇬🇳 Guinea */
+GN:{
+  lang:"fr",
+  direction:"ltr",
+  className:"",
+  badge:"18+",
+  title:"Quelque chose de spécial vous attend",
+  description:"Cliquez sur le bouton ci-dessous pour continuer.",
+  button:"Voir plus"
+},
+
+/* 🇬🇲 Gambia */
+GM:{
+  lang:"en",
+  direction:"ltr",
+  className:"",
+  badge:"18+",
+  title:"Something special is waiting for you",
+  description:"Click the button below to continue.",
+  button:"Continue"
+},
+
+/* 🇸🇱 Sierra Leone */
+SL:{
+  lang:"en",
+  direction:"ltr",
+  className:"",
+  badge:"18+",
+  title:"Something special is waiting for you",
+  description:"Click the button below to continue.",
+  button:"Continue"
 }
 
 };
 
+
+/*
+========================================
+الدول العربية
+========================================
+*/
+
+const arabicCountries = new Set([
+
+"SA", // Saudi Arabia
+"KW", // Kuwait
+"AE", // United Arab Emirates
+"QA", // Qatar
+"BH", // Bahrain
+"OM", // Oman
+"JO", // Jordan
+"LB", // Lebanon
+"EG", // Egypt
+"IQ", // Iraq
+"SY", // Syria
+"YE", // Yemen
+"PS", // Palestine
+"MA", // Morocco
+"DZ", // Algeria
+"TN", // Tunisia
+"LY", // Libya
+"SD", // Sudan
+"SS", // South Sudan
+"SO", // Somalia
+"DJ", // Djibouti
+"KM", // Comoros
+"MR", // Mauritania
+"ER"  // Eritrea
+
+]);
+
+
+/*
+========================================
+العربي
+========================================
+*/
+
+const arabic = {
+
+  lang:"ar",
+  direction:"rtl",
+  className:"",
+  badge:"18+",
+  title:"هناك شيء مميز بانتظارك",
+  description:"اضغط على الزر بالأسفل للمتابعة.",
+  button:"المزيد"
+};
+
+
+/*
+========================================
+English — باقي الدول
+========================================
+*/
 
 const fallback = {
 
-lang:"en",
-direction:"ltr",
-badge:"18+",
-title:"Welcome",
-description:"Click below to continue.",
-button:"Continue"
+  lang:"en",
+  direction:"ltr",
+  className:"",
+  badge:"18+",
+  title:"Something special is waiting for you",
+  description:"Click the button below to continue.",
+  button:"Continue"
 
 };
 
 
+/*
+========================================
+عرض الصفحة
+========================================
+*/
+
 function renderPage(countryCode){
 
-const data =
-countries[countryCode] || fallback;
+  let data;
 
-document.documentElement.lang =
-data.lang;
+  if(countries[countryCode]){
+    data = countries[countryCode];
+  }
 
-const content =
-document.getElementById("content");
+  else if(arabicCountries.has(countryCode)){
+    data = arabic;
+  }
 
-content.classList.remove(
-"rtl",
-"urdu"
-);
+  else{
+    data = fallback;
+  }
 
-if(data.direction === "rtl"){
-content.classList.add("rtl");
+
+  document.documentElement.lang =
+    data.lang;
+
+
+  const content =
+    document.getElementById("content");
+
+
+  content.classList.remove(
+    "rtl",
+    "bn",
+    "np"
+  );
+
+
+  if(data.direction === "rtl"){
+    content.classList.add("rtl");
+  }
+
+
+  if(data.className){
+    content.classList.add(data.className);
+  }
+
+
+  document.getElementById("badge").textContent =
+    data.badge;
+
+  document.getElementById("title").textContent =
+    data.title;
+
+  document.getElementById("description").textContent =
+    data.description;
+
+
+  const button =
+    document.getElementById("cta");
+
+
+  button.textContent =
+    data.button;
+
+
+  /*
+  مهم:
+  نفس الـSmartLink القديم بدون أي تغيير
+  */
+
+  button.href =
+    SMARTLINK;
+
+
+  document.getElementById("loading")
+    .classList.add("hidden");
+
+  document.getElementById("mainContent")
+    .classList.remove("hidden");
+
 }
 
-if(countryCode === "PK"){
-content.classList.add("urdu");
-}
 
-document.getElementById("badge").textContent =
-data.badge;
-
-document.getElementById("title").textContent =
-data.title;
-
-document.getElementById("description").textContent =
-data.description;
-
-const button =
-document.getElementById("cta");
-
-button.textContent =
-data.button;
-
-button.href =
-SMARTLINK;
-
-document.getElementById("loading")
-.classList.add("hidden");
-
-document.getElementById("mainContent")
-.classList.remove("hidden");
-
-}
-
+/*
+========================================
+اكتشاف الدولة من IP
+========================================
+*/
 
 async function detectCountry(){
 
-try{
+  try{
 
-const response =
-await fetch(
-"https://ipapi.co/json/",
-{
-method:"GET",
-cache:"no-store"
+    const response =
+      await fetch(
+        "https://ipapi.co/json/",
+        {
+          method:"GET",
+          cache:"no-store"
+        }
+      );
+
+
+    if(!response.ok){
+      throw new Error("Geo API error");
+    }
+
+
+    const data =
+      await response.json();
+
+
+    const country =
+      String(
+        data.country_code || ""
+      )
+      .toUpperCase();
+
+
+    renderPage(country);
+
+
+  }catch(error){
+
+    /*
+    لو خدمة معرفة الدولة لم تستجب:
+    تظهر الصفحة بالإنجليزية
+    */
+
+    renderPage(null);
+
+  }
+
 }
-);
 
-if(!response.ok){
-throw new Error("Geo API error");
-}
 
-const data =
-await response.json();
-
-const country =
-String(
-data.country_code || ""
-)
-.toUpperCase();
-
-renderPage(country);
-
-}catch(error){
-
-renderPage(null);
-
-}
-
-}
-
+/*
+تشغيل النظام
+*/
 
 detectCountry();
 
