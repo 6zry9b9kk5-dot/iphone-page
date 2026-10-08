@@ -34,7 +34,7 @@ body{
       rgba(0,0,0,.18),
       rgba(0,0,0,.48)
     ),
-    url("IMG_5677.jpeg");
+    url("IMG_5891.jpeg");
 
   background-size:cover;
   background-position:center;
@@ -315,19 +315,11 @@ function renderPage(countryCode){
 
   let data;
 
-  /*
-  لو الدولة واحدة من الدول الأساسية
-  */
-
   if(countries[countryCode]){
 
     data = countries[countryCode];
 
   }
-
-  /*
-  أي دولة تانية = English
-  */
 
   else{
 
@@ -385,11 +377,6 @@ function renderPage(countryCode){
   button.textContent =
     data.button;
 
-
-  /*
-  مهم:
-  نفس الـSmartLink القديم بدون أي تغيير
-  */
 
   button.href =
     SMARTLINK;
@@ -451,11 +438,6 @@ async function detectCountry(){
   }
 
   catch(error){
-
-    /*
-    لو خدمة معرفة الدولة لم تستجب:
-    تظهر الصفحة بالإنجليزية
-    */
 
     renderPage(null);
 
