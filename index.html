@@ -182,13 +182,6 @@ h1{
   direction:rtl;
 }
 
-.np{
-  font-family:
-    Arial,
-    "Noto Sans Devanagari",
-    sans-serif;
-}
-
 .bn{
   font-family:
     Arial,
@@ -196,18 +189,6 @@ h1{
     sans-serif;
 }
 
-@media(max-width:480px){
-
-  .content{
-    padding:25px 17px;
-    border-radius:20px;
-  }
-
-  .cta{
-    width:100%;
-  }
-
-}
 </style>
 </head>
 
@@ -258,17 +239,6 @@ const SMARTLINK =
 
 const countries = {
 
-/* 🇧🇩 Bangladesh */
-BD:{
-  lang:"bn",
-  direction:"ltr",
-  className:"bn",
-  badge:"18+",
-  title:"আপনার জন্য বিশেষ কিছু আছে",
-  description:"আরও দেখতে নিচের বাটনে ক্লিক করুন।",
-  button:"আরও দেখুন"
-},
-
 /* 🇵🇭 Philippines */
 PH:{
   lang:"fil",
@@ -276,119 +246,43 @@ PH:{
   className:"",
   badge:"18+",
   title:"May espesyal para sa iyo",
-  description:"I-click ang button sa ibaba para makita pa.",
+  description:"I-click dito para makita pa.",
   button:"Tingnan pa"
 },
 
-/* 🇳🇵 Nepal */
-NP:{
-  lang:"ne",
-  direction:"ltr",
-  className:"np",
-  badge:"18+",
-  title:"तपाईंका लागि केही विशेष छ",
-  description:"थप हेर्न तलको बटनमा क्लिक गर्नुहोस्।",
-  button:"थप हेर्नुहोस्"
-},
-
-/* 🇲🇱 Mali */
-ML:{
-  lang:"fr",
-  direction:"ltr",
-  className:"",
-  badge:"18+",
-  title:"Quelque chose de spécial vous attend",
-  description:"Cliquez sur le bouton ci-dessous pour continuer.",
-  button:"Voir plus"
-},
-
-/* 🇬🇳 Guinea */
-GN:{
-  lang:"fr",
-  direction:"ltr",
-  className:"",
-  badge:"18+",
-  title:"Quelque chose de spécial vous attend",
-  description:"Cliquez sur le bouton ci-dessous pour continuer.",
-  button:"Voir plus"
-},
-
-/* 🇬🇲 Gambia */
-GM:{
+/* 🇰🇪 Kenya */
+KE:{
   lang:"en",
   direction:"ltr",
   className:"",
   badge:"18+",
   title:"Something special is waiting for you",
-  description:"Click the button below to continue.",
-  button:"Continue"
+  description:"Click here to see more.",
+  button:"See more"
 },
 
-/* 🇸🇱 Sierra Leone */
-SL:{
-  lang:"en",
+/* 🇧🇷 Brazil */
+BR:{
+  lang:"pt",
   direction:"ltr",
   className:"",
   badge:"18+",
-  title:"Something special is waiting for you",
-  description:"Click the button below to continue.",
-  button:"Continue"
+  title:"Há algo especial esperando por você",
+  description:"Clique aqui para ver mais.",
+  button:"Ver mais"
+},
+
+/* 🇧🇩 Bangladesh */
+BD:{
+  lang:"bn",
+  direction:"ltr",
+  className:"bn",
+  badge:"18+",
+  title:"আপনার জন্য বিশেষ কিছু আছে",
+  description:"আরও দেখতে এখানে ক্লিক করুন।",
+  button:"আরও দেখুন"
 }
 
-};
-
-
-/*
-========================================
-الدول العربية
-========================================
-*/
-
-const arabicCountries = new Set([
-
-"SA", // Saudi Arabia
-"KW", // Kuwait
-"AE", // United Arab Emirates
-"QA", // Qatar
-"BH", // Bahrain
-"OM", // Oman
-"JO", // Jordan
-"LB", // Lebanon
-"EG", // Egypt
-"IQ", // Iraq
-"SY", // Syria
-"YE", // Yemen
-"PS", // Palestine
-"MA", // Morocco
-"DZ", // Algeria
-"TN", // Tunisia
-"LY", // Libya
-"SD", // Sudan
-"SS", // South Sudan
-"SO", // Somalia
-"DJ", // Djibouti
-"KM", // Comoros
-"MR", // Mauritania
-"ER"  // Eritrea
-
-]);
-
-
-/*
-========================================
-العربي
-========================================
-*/
-
-const arabic = {
-
-  lang:"ar",
-  direction:"rtl",
-  className:"",
-  badge:"18+",
-  title:"هناك شيء مميز بانتظارك",
-  description:"اضغط على الزر بالأسفل للمتابعة.",
-  button:"المزيد"
 };
 
 
@@ -405,8 +299,8 @@ const fallback = {
   className:"",
   badge:"18+",
   title:"Something special is waiting for you",
-  description:"Click the button below to continue.",
-  button:"Continue"
+  description:"Click here to see more.",
+  button:"See more"
 
 };
 
@@ -421,16 +315,24 @@ function renderPage(countryCode){
 
   let data;
 
+  /*
+  لو الدولة واحدة من الدول الأساسية
+  */
+
   if(countries[countryCode]){
+
     data = countries[countryCode];
+
   }
 
-  else if(arabicCountries.has(countryCode)){
-    data = arabic;
-  }
+  /*
+  أي دولة تانية = English
+  */
 
   else{
+
     data = fallback;
+
   }
 
 
@@ -444,26 +346,33 @@ function renderPage(countryCode){
 
   content.classList.remove(
     "rtl",
-    "bn",
-    "np"
+    "bn"
   );
 
 
   if(data.direction === "rtl"){
+
     content.classList.add("rtl");
+
   }
 
 
   if(data.className){
-    content.classList.add(data.className);
+
+    content.classList.add(
+      data.className
+    );
+
   }
 
 
   document.getElementById("badge").textContent =
     data.badge;
 
+
   document.getElementById("title").textContent =
     data.title;
+
 
   document.getElementById("description").textContent =
     data.description;
@@ -488,6 +397,7 @@ function renderPage(countryCode){
 
   document.getElementById("loading")
     .classList.add("hidden");
+
 
   document.getElementById("mainContent")
     .classList.remove("hidden");
@@ -516,7 +426,11 @@ async function detectCountry(){
 
 
     if(!response.ok){
-      throw new Error("Geo API error");
+
+      throw new Error(
+        "Geo API error"
+      );
+
     }
 
 
@@ -534,7 +448,9 @@ async function detectCountry(){
     renderPage(country);
 
 
-  }catch(error){
+  }
+
+  catch(error){
 
     /*
     لو خدمة معرفة الدولة لم تستجب:
@@ -549,7 +465,9 @@ async function detectCountry(){
 
 
 /*
+========================================
 تشغيل النظام
+========================================
 */
 
 detectCountry();
