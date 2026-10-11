@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,453 +8,146 @@
 <title>Welcome</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-html,body{
-  width:100%;
-  height:100%;
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #111;
 }
 
-body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#111;
-  overflow:hidden;
+.page {
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image:
+        linear-gradient(rgba(0,0,0,.30), rgba(0,0,0,.40)),
+        url("IMG_6021.gif");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
-.page{
-  width:100%;
-  height:100vh;
-  height:100dvh;
-
-  background-image:
-    linear-gradient(
-      rgba(0,0,0,.18),
-      rgba(0,0,0,.48)
-    ),
-    url("IMG_5891.jpeg");
-
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  position:relative;
+.watch-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 58px;
+    padding: 16px 30px;
+    max-width: 90%;
+    border: none;
+    border-radius: 50px;
+    background: #ff1765;
+    color: #fff;
+    font-size: 21px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    box-shadow: 0 5px 25px rgba(255, 23, 101, .40);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform .15s ease;
 }
 
-.overlay{
-  position:absolute;
-  inset:0;
-
-  background:
-    radial-gradient(
-      circle at center,
-      rgba(0,0,0,.02) 0%,
-      rgba(0,0,0,.45) 100%
-    );
+.watch-button:active {
+    transform: scale(.96);
 }
 
-.content{
-  position:relative;
-  z-index:2;
-
-  width:min(90%,500px);
-
-  text-align:center;
-
-  padding:30px 22px;
-
-  border-radius:24px;
-
-  background:rgba(0,0,0,.28);
-
-  backdrop-filter:blur(5px);
-  -webkit-backdrop-filter:blur(5px);
-
-  border:1px solid rgba(255,255,255,.16);
-
-  box-shadow:
-    0 20px 60px rgba(0,0,0,.45);
+@media (max-width: 380px) {
+    .watch-button {
+        font-size: 18px;
+        padding: 14px 22px;
+    }
 }
-
-.badge{
-  display:inline-block;
-
-  padding:7px 16px;
-
-  margin-bottom:18px;
-
-  border-radius:30px;
-
-  background:rgba(255,255,255,.15);
-
-  border:1px solid rgba(255,255,255,.25);
-
-  color:#fff;
-
-  font-size:13px;
-
-  font-weight:700;
-
-  letter-spacing:.4px;
-}
-
-h1{
-  color:#fff;
-
-  font-size:clamp(28px,7vw,44px);
-
-  line-height:1.15;
-
-  margin-bottom:14px;
-
-  text-shadow:
-    0 3px 15px rgba(0,0,0,.7);
-}
-
-.description{
-  color:rgba(255,255,255,.95);
-
-  font-size:clamp(15px,4vw,18px);
-
-  line-height:1.6;
-
-  margin-bottom:25px;
-
-  text-shadow:
-    0 2px 10px rgba(0,0,0,.8);
-}
-
-.cta{
-  display:inline-flex;
-
-  align-items:center;
-  justify-content:center;
-
-  min-width:220px;
-  min-height:58px;
-
-  padding:14px 28px;
-
-  border-radius:40px;
-
-  background:linear-gradient(
-    135deg,
-    #ff2d78,
-    #9c27ff
-  );
-
-  color:#fff;
-
-  text-decoration:none;
-
-  font-size:18px;
-
-  font-weight:800;
-
-  box-shadow:
-    0 10px 30px rgba(0,0,0,.45);
-
-  transition:
-    transform .2s ease,
-    box-shadow .2s ease;
-}
-
-.cta:active{
-  transform:scale(.96);
-}
-
-.loading{
-  color:#fff;
-  font-size:15px;
-}
-
-.hidden{
-  display:none;
-}
-
-.rtl{
-  direction:rtl;
-}
-
-.bn{
-  font-family:
-    Arial,
-    "Noto Sans Bengali",
-    sans-serif;
-}
-
 </style>
 </head>
 
 <body>
 
 <main class="page">
-
-<div class="overlay"></div>
-
-<section class="content" id="content">
-
-<div class="loading" id="loading">
-Loading...
-</div>
-
-<div id="mainContent" class="hidden">
-
-<div class="badge" id="badge"></div>
-
-<h1 id="title"></h1>
-
-<p class="description" id="description"></p>
-
-<a
-  class="cta"
-  id="cta"
-  href="https://adsone.leadseagle.shop/?utm_medium=ad91ef12cbc61028dd54bd1f95ec531c80b2da20&utm_campaign=medoads1"
-  rel="nofollow"
-></a>
-
-</div>
-
-</section>
-
+    <a
+        class="watch-button"
+        id="watchButton"
+        href="https://t.co/EQHGRhNQmD"
+        rel="nofollow sponsored"
+    >
+        <span id="buttonText">Watch Now</span>
+        <span aria-hidden="true">🫦</span>
+    </a>
 </main>
 
 <script>
+(async function () {
+    const buttonText = document.getElementById("buttonText");
 
-const SMARTLINK =
-"https://adsone.leadseagle.shop/?utm_medium=ad91ef12cbc61028dd54bd1f95ec531c80b2da20&utm_campaign=medoads1";
-
-
-/*
-========================================
-الدول الأساسية
-========================================
-*/
-
-const countries = {
-
-/* 🇵🇭 Philippines */
-PH:{
-  lang:"fil",
-  direction:"ltr",
-  className:"",
-  badge:"18+",
-  title:"May espesyal para sa iyo",
-  description:"I-click dito para makita pa.",
-  button:"Tingnan pa"
-},
-
-/* 🇰🇪 Kenya */
-KE:{
-  lang:"en",
-  direction:"ltr",
-  className:"",
-  badge:"18+",
-  title:"Something special is waiting for you",
-  description:"Click here to see more.",
-  button:"See more"
-},
-
-/* 🇧🇷 Brazil */
-BR:{
-  lang:"pt",
-  direction:"ltr",
-  className:"",
-  badge:"18+",
-  title:"Há algo especial esperando por você",
-  description:"Clique aqui para ver mais.",
-  button:"Ver mais"
-},
-
-/* 🇧🇩 Bangladesh */
-BD:{
-  lang:"bn",
-  direction:"ltr",
-  className:"bn",
-  badge:"18+",
-  title:"আপনার জন্য বিশেষ কিছু আছে",
-  description:"আরও দেখতে এখানে ক্লিক করুন।",
-  button:"আরও দেখুন"
-}
-
-};
-
-
-/*
-========================================
-English — باقي الدول
-========================================
-*/
-
-const fallback = {
-
-  lang:"en",
-  direction:"ltr",
-  className:"",
-  badge:"18+",
-  title:"Something special is waiting for you",
-  description:"Click here to see more.",
-  button:"See more"
-
-};
-
-
-/*
-========================================
-عرض الصفحة
-========================================
-*/
-
-function renderPage(countryCode){
-
-  let data;
-
-  if(countries[countryCode]){
-
-    data = countries[countryCode];
-
-  }
-
-  else{
-
-    data = fallback;
-
-  }
-
-
-  document.documentElement.lang =
-    data.lang;
-
-
-  const content =
-    document.getElementById("content");
-
-
-  content.classList.remove(
-    "rtl",
-    "bn"
-  );
-
-
-  if(data.direction === "rtl"){
-
-    content.classList.add("rtl");
-
-  }
-
-
-  if(data.className){
-
-    content.classList.add(
-      data.className
-    );
-
-  }
-
-
-  document.getElementById("badge").textContent =
-    data.badge;
-
-
-  document.getElementById("title").textContent =
-    data.title;
-
-
-  document.getElementById("description").textContent =
-    data.description;
-
-
-  const button =
-    document.getElementById("cta");
-
-
-  button.textContent =
-    data.button;
-
-
-  button.href =
-    SMARTLINK;
-
-
-  document.getElementById("loading")
-    .classList.add("hidden");
-
-
-  document.getElementById("mainContent")
-    .classList.remove("hidden");
-
-}
-
-
-/*
-========================================
-اكتشاف الدولة من IP
-========================================
-*/
-
-async function detectCountry(){
-
-  try{
-
-    const response =
-      await fetch(
-        "https://ipapi.co/json/",
-        {
-          method:"GET",
-          cache:"no-store"
+    const translations = {
+        PH: {
+            lang: "fil",
+            text: "Manood Na Ngayon"
+        },
+        KE: {
+            lang: "en",
+            text: "Watch Now"
+        },
+        BR: {
+            lang: "pt-BR",
+            text: "Assista Agora"
+        },
+        BD: {
+            lang: "bn",
+            text: "এখনই দেখুন"
         }
-      );
+    };
 
+    const arabicCountries = new Set([
+        "EG", "SA", "AE", "KW", "QA", "BH", "OM",
+        "JO", "LB", "IQ", "SY", "YE", "PS", "IL",
+        "MA", "DZ", "TN", "LY", "SD", "SS", "MR",
+        "SO", "DJ", "KM", "TD", "ER"
+    ]);
 
-    if(!response.ok){
+    try {
+        const response = await fetch(
+            "https://ipapi.co/json/",
+            { cache: "no-store" }
+        );
 
-      throw new Error(
-        "Geo API error"
-      );
+        if (!response.ok) throw new Error("IP lookup failed");
 
+        const data = await response.json();
+        const country = (data.country_code || "").toUpperCase();
+
+        if (translations[country]) {
+            buttonText.textContent = translations[country].text;
+            document.documentElement.lang =
+                translations[country].lang;
+            document.documentElement.dir = "ltr";
+        } else if (arabicCountries.has(country)) {
+            buttonText.textContent = "شاهد الآن فورًا";
+            document.documentElement.lang = "ar";
+            document.documentElement.dir = "rtl";
+        } else {
+            buttonText.textContent = "Watch Now";
+            document.documentElement.lang = "en";
+            document.documentElement.dir = "ltr";
+        }
+    } catch (error) {
+        buttonText.textContent = "Watch Now";
+        document.documentElement.lang = "en";
+        document.documentElement.dir = "ltr";
     }
-
-
-    const data =
-      await response.json();
-
-
-    const country =
-      String(
-        data.country_code || ""
-      )
-      .toUpperCase();
-
-
-    renderPage(country);
-
-
-  }
-
-  catch(error){
-
-    renderPage(null);
-
-  }
-
-}
-
-
-/*
-========================================
-تشغيل النظام
-========================================
-*/
-
-detectCountry();
-
+})();
 </script>
 
 </body>
