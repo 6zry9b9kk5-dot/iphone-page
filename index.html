@@ -18,22 +18,35 @@ html, body {
     background: #111;
 }
 .page {
+    position: relative;
     width: 100%;
     height: 100vh;
     height: 100dvh;
-    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image:
-        linear-gradient(rgba(0,0,0,.20), rgba(0,0,0,.25)),
-        url("IMG_6021.gif");
-    background-position: center;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    background-color: #111;
+    overflow: hidden;
+    background: #111;
+}
+.background-gif {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    z-index: 0;
+}
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.18);
+    z-index: 1;
+    pointer-events: none;
 }
 .watch-button {
+    position: relative;
+    z-index: 2;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -67,6 +80,12 @@ html, body {
 </head>
 <body>
 <main class="page">
+    <img
+        class="background-gif"
+        src="IMG_6021.gif"
+        alt=""
+    >
+    <div class="overlay"></div>
     <a
         class="watch-button"
         id="watchButton"
@@ -81,22 +100,10 @@ html, body {
 (async function () {
     const buttonText = document.getElementById("buttonText");
     const translations = {
-        PH: {
-            lang: "fil",
-            text: "Manood Na Ngayon"
-        },
-        KE: {
-            lang: "en",
-            text: "Watch Now"
-        },
-        BR: {
-            lang: "pt-BR",
-            text: "Assista Agora"
-        },
-        BD: {
-            lang: "bn",
-            text: "এখনই দেখুন"
-        }
+        PH: { lang: "fil", text: "Manood Na Ngayon" },
+        KE: { lang: "en", text: "Watch Now" },
+        BR: { lang: "pt-BR", text: "Assista Agora" },
+        BD: { lang: "bn", text: "এখনই দেখুন" }
     };
     const arabicCountries = new Set([
         "EG", "SA", "AE", "KW", "QA", "BH", "OM",
@@ -109,9 +116,7 @@ html, body {
             "https://ipapi.co/json/",
             { cache: "no-store" }
         );
-        if (!response.ok) {
-            throw new Error("IP lookup failed");
-        }
+        if (!response.ok) throw new Error("IP lookup failed");
         const data = await response.json();
         const country = (data.country_code || "").toUpperCase();
         if (translations[country]) {
