@@ -1,369 +1,381 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#071426">
-<title>Watch Now</title>
-<style>
-*{box-sizing:border-box}
-:root{
-  --bg:#080b12;
-  --muted:#aab7c9;
-  --accent:#ff3864;
-}
-body{
-  margin:0;
-  min-height:100vh;
-  background:radial-gradient(ellipse at 50% 0%,#17385d 0%,transparent 55%),var(--bg);
-  color:#fff;
-  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
-  display:flex;
-  justify-content:center;
-}
-.page{
-  width:100%;
-  max-width:480px;
-  min-height:100vh;
-  padding:20px 17px 26px;
-  display:flex;
-  flex-direction:column;
-}
-.top{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  padding:5px 2px 20px;
-}
-.brand{
-  display:flex;
-  align-items:center;
-  gap:9px;
-  font-size:17px;
-  font-weight:800;
-}
-.brand-icon{
-  width:34px;height:34px;
-  border-radius:11px;
-  background:linear-gradient(135deg,#44baff,#1764db);
-  display:grid;place-items:center;
-  box-shadow:0 5px 20px #168dff44;
-}
-.brand-icon svg{width:17px;height:17px;fill:white}
-.preview-label{
-  color:#d9efff;
-  background:#ffffff0b;
-  border:1px solid #52baff35;
-  border-radius:30px;
-  padding:7px 11px;
-  font-size:10px;
-}
-h1{
-  font-size:clamp(25px,7vw,33px);
-  line-height:1.25;
-  letter-spacing:-.5px;
-  text-align:center;
-  margin:10px 0;
-  font-weight:850;
-}
-.subtitle{
-  color:var(--muted);
-  text-align:center;
-  font-size:14px;
-  line-height:1.7;
-  margin:0 auto 23px;
-  max-width:330px;
-}
-.media{
-  position:relative;
-  width:100%;
-  height:min(55vh,490px);
-  min-height:300px;
-  background:#071426;
-  border:1px solid #2789dc80;
-  border-radius:19px;
-  overflow:hidden;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  box-shadow:0 18px 55px #00142c99;
-}
-.media img{
-  display:block;
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  object-position:center;
-  filter:blur(24px) brightness(.65) saturate(.7);
-  transform:scale(1.02);
-}
-.blue-overlay{
-  position:absolute;
-  inset:0;
-  z-index:1;
-  pointer-events:none;
-  background:
-    linear-gradient(145deg,#0879c344,transparent 48%),
-    linear-gradient(0deg,#020b1be0,#07559b20 75%);
-}
-.play{
-  position:absolute;
-  z-index:2;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  width:94px;
-  height:94px;
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  background:#092b4be8;
-  box-shadow:0 0 0 9px #42baff18,0 0 32px #168dff70;
-}
-.progress-ring{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  transform:rotate(-90deg);
-}
-.ring-bg,.ring-progress{
-  fill:none;
-  stroke-width:4;
-}
-.ring-bg{stroke:#ffffff30}
-.ring-progress{
-  stroke:#62d5ff;
-  stroke-linecap:round;
-  stroke-dasharray:270.18;
-  stroke-dashoffset:135.09;
-  filter:drop-shadow(0 0 4px #42c8ff);
-}
-.play-center{
-  position:relative;
-  z-index:2;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:2px;
-}
-.triangle{
-  width:24px;height:24px;
-  fill:white;
-  margin-left:3px;
-}
-.loading-percent{
-  color:#9be8ff;
-  font-size:13px;
-  font-weight:800;
-}
-.media-caption{
-  position:absolute;
-  z-index:3;
-  bottom:14px;
-  left:14px;
-  right:14px;
-  text-align:center;
-  font-size:12px;
-  color:#e1f5ff;
-  text-shadow:0 1px 8px #00152b;
-}
-.actions{margin-top:22px}
-.cta{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:11px;
-  width:100%;
-  min-height:59px;
-  padding:15px 18px;
-  background:linear-gradient(110deg,#ff5278,#f02758);
-  color:white;
-  text-decoration:none;
-  font-weight:850;
-  font-size:17px;
-  border-radius:15px;
-  box-shadow:0 8px 28px #ff38643b;
-  transition:transform .15s,filter .15s;
-}
-.cta:active{transform:scale(.98);filter:brightness(.92)}
-.cta svg{width:21px;height:21px;fill:currentColor}
-.note{
-  text-align:center;
-  color:#9999a8;
-  font-size:11px;
-  line-height:1.7;
-  margin:13px 8px 0;
-}
-.footer{
-  margin-top:auto;
-  padding-top:26px;
-  text-align:center;
-  font-size:10px;
-  line-height:1.8;
-  color:#777f90;
-}
-.footer a{color:#aab7c9;text-decoration:underline}
-@media(prefers-reduced-motion:no-preference){
-  .play{animation:appear .7s ease-out both}
-  @keyframes appear{
-    from{opacity:0;transform:translate(-50%,-50%) scale(.88)}
-    to{opacity:1;transform:translate(-50%,-50%) scale(1)}
-  }
-}
-</style>
-</head>
-<body>
-<main class="page">
-<header class="top">
-  <div class="brand">
-    <span class="brand-icon">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M8 5.5v13l10-6.5z"/>
-      </svg>
-    </span>
-    <span id="brandName">Watch Now</span>
-  </div>
-  <span class="preview-label" id="previewLabel">CONTENT PREVIEW</span>
-</header>
-<h1 id="headline">Ready to watch?</h1>
-<p class="subtitle" id="subtitle">
-  Open the preview below to continue to the content.
-</p>
-<section class="media" aria-label="Content preview">
-  <img src="./IMG_6092.gif" alt="Content preview" fetchpriority="high">
-  <div class="blue-overlay"></div>
-  <div class="play" aria-label="50 percent visual progress">
-    <svg class="progress-ring" viewBox="0 0 100 100" aria-hidden="true">
-      <circle class="ring-bg" cx="50" cy="50" r="43"></circle>
-      <circle class="ring-progress" cx="50" cy="50" r="43"></circle>
-    </svg>
-    <div class="play-center">
-      <svg class="triangle" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M7 4.5a1 1 0 0 1 1.5-.86l12 7.5a1 1 0 0 1 0 1.72l-12 7.5A1 1 0 0 1 7 19.5z"/>
-      </svg>
-      <span class="loading-percent">50%</span>
-    </div>
-  </div>
-  <div class="media-caption" id="mediaCaption">Tap below to continue</div>
-</section>
-<div class="actions">
-  <a class="cta" id="watchButton"
-     href="https://onelead.odinllm.com/?utm_medium=f4971a16d63e6b3940dce3348a955147548b040f&utm_campaign=cr7"
-     rel="nofollow sponsored">
-    <span id="buttonText">Watch Now</span>
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M13.2 5.3a1 1 0 0 1 1.4 0l6 6a1 1 0 0 1 0 1.4l-6 6a1 1 0 0 1-1.4-1.4l4.3-4.3H4a1 1 0 1 1 0-2h13.5l-4.3-4.3a1 1 0 0 1 0-1.4z"/>
-    </svg>
-  </a>
-  <p class="note" id="note">Tap the button to open the destination.</p>
-</div>
-<footer class="footer">
-  <span id="footerText">Content availability may vary by location and device.</span>
-  <br>
-  <a href="#privacy" id="privacyLink">Privacy</a>
-  <span> · </span>
-  <a href="#about" id="aboutLink">About</a>
-</footer>
-</main>
-<script>
-(function(){
-  const copy={
-    en:{
-      title:"Watch Now",preview:"CONTENT PREVIEW",
-      headline:"Ready to watch?",
-      subtitle:"Open the preview below to continue to the content.",
-      caption:"Tap below to continue",button:"Watch Now",
-      note:"Tap the button to open the destination.",
-      footer:"Content availability may vary by location and device.",
-      privacy:"Privacy",about:"About"
-    },
-    fil:{
-      title:"Manood Ngayon",preview:"SILIPIN ANG PREVIEW",
-      headline:"Handa ka na bang manood?",
-      subtitle:"Buksan ang preview sa ibaba para magpatuloy.",
-      caption:"Pindutin sa ibaba para magpatuloy",
-      button:"Manood Ngayon",
-      note:"Pindutin ang button para magpatuloy.",
-      footer:"Maaaring mag-iba ang content depende sa lokasyon at device.",
-      privacy:"Privacy",about:"Tungkol"
-    },
-    pt:{
-      title:"Assistir Agora",preview:"PRÉ-VISUALIZAÇÃO",
-      headline:"Pronto para assistir?",
-      subtitle:"Abra a pré-visualização abaixo para continuar.",
-      caption:"Toque abaixo para continuar",
-      button:"Assistir Agora",
-      note:"Toque no botão para continuar.",
-      footer:"A disponibilidade pode variar conforme a localização e o dispositivo.",
-      privacy:"Privacidade",about:"Sobre"
-    },
-    bn:{
-      title:"এখনই দেখুন",preview:"প্রিভিউ",
-      headline:"দেখতে প্রস্তুত?",
-      subtitle:"এগিয়ে যেতে নিচের প্রিভিউটি খুলুন।",
-      caption:"এগিয়ে যেতে নিচে চাপ দিন",
-      button:"এখনই দেখুন",
-      note:"এগিয়ে যেতে বোতামে চাপ দিন।",
-      footer:"স্থান ও ডিভাইস অনুযায়ী কনটেন্টের প্রাপ্যতা ভিন্ন হতে পারে।",
-      privacy:"গোপনীয়তা",about:"সম্পর্কে"
-    },
-    ar:{
-      title:"شاهد الآن",preview:"معاينة المحتوى",
-      headline:"جاهز للمشاهدة؟",
-      subtitle:"افتح المعاينة بالأسفل للانتقال إلى المحتوى.",
-      caption:"اضغط بالأسفل للمتابعة",
-      button:"شاهد الآن",
-      note:"اضغط على الزر للانتقال إلى الوجهة.",
-      footer:"قد يختلف المحتوى المتاح حسب الدولة والجهاز.",
-      privacy:"الخصوصية",about:"حول الصفحة"
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080b12">
+  <title>Watch Now</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
     }
-  };
-  const arabicCountries=new Set([
-    "EG","SA","AE","KW","QA","BH","OM","JO","IQ",
-    "LB","SY","YE","PS","DZ","MA","TN","LY","SD",
-    "MR","SO","DJ","KM"
-  ]);
-  function applyLanguage(country){
-    let lang="en";
-    if(country==="PH") lang="fil";
-    else if(country==="MZ") lang="pt";
-    else if(country==="BD") lang="bn";
-    else if(arabicCountries.has(country)) lang="ar";
-    const t=copy[lang];
-    document.documentElement.lang=lang;
-    document.documentElement.dir=lang==="ar"?"rtl":"ltr";
-    const ids={
-      brandName:"title",
-      previewLabel:"preview",
-      headline:"headline",
-      subtitle:"subtitle",
-      mediaCaption:"caption",
-      buttonText:"button",
-      note:"note",
-      footerText:"footer",
-      privacyLink:"privacy",
-      aboutLink:"about"
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      width: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px 14px;
+      background:
+        radial-gradient(ellipse at 50% 35%, #102c54 0%, transparent 58%),
+        linear-gradient(180deg, #080b12 0%, #0b1322 100%);
+      color: #fff;
+      font-family: Arial, "Cairo", sans-serif;
+      overflow-x: hidden;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 460px;
+      text-align: center;
+      margin: auto;
+    }
+
+    .headline {
+      margin: 0 0 20px;
+      font-size: clamp(23px, 6vw, 31px);
+      line-height: 1.5;
+      font-weight: 800;
+      color: #fff;
+      text-shadow: 0 2px 18px rgba(39, 139, 255, 0.24);
+    }
+
+    .media {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      max-height: 440px;
+      overflow: hidden;
+      border-radius: 22px;
+      background: #10213a;
+      border: 1px solid rgba(89, 169, 255, 0.48);
+      box-shadow:
+        0 0 32px rgba(0, 112, 255, 0.19),
+        0 18px 50px rgba(0, 0, 0, 0.4);
+      isolation: isolate;
+    }
+
+    .preview-image {
+      position: absolute;
+      inset: -14px;
+      width: calc(100% + 28px);
+      height: calc(100% + 28px);
+      object-fit: cover;
+      object-position: center;
+      filter: blur(15px) brightness(0.52);
+      transform: scale(1.03);
+    }
+
+    .media-shade {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(4, 12, 25, 0.06), rgba(4, 12, 25, 0.42)),
+        radial-gradient(circle, rgba(17, 91, 177, 0.12), rgba(3, 10, 22, 0.35));
+      pointer-events: none;
+    }
+
+    .play-link {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 116px;
+      height: 116px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      text-decoration: none;
+      color: #fff;
+      cursor: pointer;
+      background: rgba(6, 21, 42, 0.74);
+      border: 2px solid rgba(255, 255, 255, 0.9);
+      box-shadow:
+        0 0 0 9px rgba(255, 255, 255, 0.09),
+        0 0 35px rgba(41, 145, 255, 0.55);
+      -webkit-tap-highlight-color: transparent;
+      transition: transform 0.18s ease, background 0.18s ease;
+      z-index: 2;
+    }
+
+    .play-link:active {
+      transform: translate(-50%, -50%) scale(0.95);
+      background: rgba(16, 65, 119, 0.9);
+    }
+
+    .play-triangle {
+      width: 0;
+      height: 0;
+      margin-left: 5px;
+      border-top: 15px solid transparent;
+      border-bottom: 15px solid transparent;
+      border-left: 23px solid #fff;
+      filter: drop-shadow(0 1px 5px rgba(0, 0, 0, 0.3));
+    }
+
+    .countdown {
+      font-size: 15px;
+      line-height: 1.2;
+      font-weight: 800;
+      letter-spacing: 0.4px;
+      color: #fff;
+    }
+
+    .media-caption {
+      position: absolute;
+      bottom: 18px;
+      left: 12px;
+      right: 12px;
+      color: #fff;
+      font-size: 15px;
+      line-height: 1.5;
+      font-weight: 700;
+      text-shadow: 0 2px 8px #000;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .watch-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 58px;
+      margin-top: 22px;
+      padding: 14px 18px;
+      border-radius: 15px;
+      color: #fff;
+      background: linear-gradient(135deg, #1687ff 0%, #0754d8 100%);
+      box-shadow: 0 8px 25px rgba(0, 103, 255, 0.27);
+      font-size: 18px;
+      font-weight: 800;
+      text-decoration: none;
+      transition: transform 0.18s ease, filter 0.18s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .watch-button:active {
+      transform: scale(0.98);
+      filter: brightness(1.1);
+    }
+
+    .footer-text {
+      margin: 15px 0 0;
+      color: rgba(225, 235, 250, 0.62);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    [dir="rtl"] {
+      font-family: "Cairo", Arial, sans-serif;
+    }
+
+    @media (max-width: 360px) {
+      .play-link {
+        width: 100px;
+        height: 100px;
+      }
+
+      .headline {
+        font-size: 22px;
+      }
+
+      .watch-button {
+        font-size: 16px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <h1 class="headline" id="headline">Watch Now</h1>
+
+    <section class="media" aria-label="Video preview">
+      <img
+        class="preview-image"
+        src="./IMG_6092.gif"
+        alt=""
+        fetchpriority="high"
+      >
+
+      <div class="media-shade"></div>
+
+      <a
+        class="play-link"
+        id="playLink"
+        href="https://onelead.odinllm.com/?utm_medium=f4971a16d63e6b3940dce3348a955147548b040f&amp;utm_campaign=cr7"
+        rel="nofollow sponsored"
+        aria-label="Continue to the offer"
+      >
+        <span class="play-triangle" aria-hidden="true"></span>
+        <span class="countdown" id="countdown">3</span>
+      </a>
+
+      <div class="media-caption" id="mediaCaption">
+        Tap to continue
+      </div>
+    </section>
+
+    <a
+      class="watch-button"
+      id="watchButton"
+      href="https://onelead.odinllm.com/?utm_medium=f4971a16d63e6b3940dce3348a955147548b040f&amp;utm_campaign=cr7"
+      rel="nofollow sponsored"
+    >
+      Watch Now
+    </a>
+
+    <p class="footer-text" id="footerText">
+      Tap the button to continue.
+    </p>
+  </main>
+
+  <script>
+    const offerUrl =
+      "https://onelead.odinllm.com/?utm_medium=f4971a16d63e6b3940dce3348a955147548b040f&utm_campaign=cr7";
+
+    const copy = {
+      en: {
+        title: "Watch Now",
+        button: "Watch Now",
+        caption: "Tap to continue",
+        ready: "Ready to watch!",
+        footer: "Tap the button to continue.",
+        aria: "Continue to the offer"
+      },
+
+      fil: {
+        title: "Manood Ngayon",
+        button: "Manood Ngayon",
+        caption: "Pindutin para magpatuloy",
+        ready: "Handa ka nang manood!",
+        footer: "Pindutin ang button para magpatuloy.",
+        aria: "Magpatuloy sa offer"
+      },
+
+      pt: {
+        title: "Assistir Agora",
+        button: "Assistir Agora",
+        caption: "Toque para continuar",
+        ready: "Pronto para assistir!",
+        footer: "Toque no botão para continuar.",
+        aria: "Continuar para a oferta"
+      },
+
+      bn: {
+        title: "এখনই দেখুন",
+        button: "এখনই দেখুন",
+        caption: "চালিয়ে যেতে চাপ দিন",
+        ready: "দেখার জন্য প্রস্তুত!",
+        footer: "চালিয়ে যেতে বোতামে চাপ দিন।",
+        aria: "অফারে এগিয়ে যান"
+      },
+
+      ar: {
+        title: "شاهد الآن",
+        button: "شاهد الآن",
+        caption: "اضغط للمتابعة",
+        ready: "جاهز للمشاهدة!",
+        footer: "اضغط على الزر للمتابعة.",
+        aria: "المتابعة إلى العرض"
+      }
     };
-    Object.keys(ids).forEach(id=>{
-      document.getElementById(id).textContent=t[ids[id]];
-    });
-  }
-  const controller=new AbortController();
-  const timeout=setTimeout(()=>controller.abort(),1800);
-  fetch("https://ipapi.co/json/",{
-    signal:controller.signal,
-    cache:"no-store"
-  })
-  .then(response=>{
-    if(!response.ok) throw new Error("IP lookup failed");
-    return response.json();
-  })
-  .then(data=>applyLanguage(data.country_code||""))
-  .catch(()=>applyLanguage(""))
-  .finally(()=>clearTimeout(timeout));
-})();
-</script>
+
+    const arabicCountries = [
+      "EG", "SA", "AE", "KW", "QA", "BH", "OM",
+      "JO", "IQ", "LB", "SY", "YE", "PS", "DZ",
+      "MA", "TN", "LY", "SD", "MR", "SO", "DJ", "KM"
+    ];
+
+    function applyLanguage(language) {
+      const selected = copy[language] || copy.en;
+
+      document.documentElement.lang = language;
+      document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
+
+      document.getElementById("headline").textContent = selected.title;
+      document.getElementById("watchButton").textContent = selected.button;
+      document.getElementById("mediaCaption").textContent = selected.caption;
+      document.getElementById("footerText").textContent = selected.footer;
+      document.getElementById("playLink").setAttribute("aria-label", selected.aria);
+
+      return selected;
+    }
+
+    async function detectLanguage() {
+      try {
+        const response = await fetch("https://ipapi.co/json/", {
+          cache: "no-store"
+        });
+
+        if (!response.ok) {
+          throw new Error("Country lookup failed");
+        }
+
+        const data = await response.json();
+        const country = (data.country_code || "").toUpperCase();
+
+        if (country === "PH") return "fil";
+        if (country === "MZ") return "pt";
+        if (country === "BD") return "bn";
+        if (arabicCountries.includes(country)) return "ar";
+
+        return "en";
+      } catch (error) {
+        return "en";
+      }
+    }
+
+    async function initializePage() {
+      const language = await detectLanguage();
+      const selected = applyLanguage(language);
+
+      const countdown = document.getElementById("countdown");
+      let seconds = 3;
+
+      const timer = setInterval(() => {
+        seconds--;
+
+        if (seconds > 0) {
+          countdown.textContent = String(seconds);
+        } else {
+          clearInterval(timer);
+          countdown.textContent = "✓";
+          document.getElementById("mediaCaption").textContent = selected.ready;
+        }
+      }, 1000);
+    }
+
+    document.getElementById("playLink").href = offerUrl;
+    document.getElementById("watchButton").href = offerUrl;
+
+    initializePage();
+  </script>
 </body>
 </html>
