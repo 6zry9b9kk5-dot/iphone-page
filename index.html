@@ -5,43 +5,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#09060d">
-<title> </title>
+<title></title>
 
 <style>
-*{
- box-sizing:border-box;
-}
-
-html,body{
- margin:0;
- min-height:100%;
- width:100%;
-}
+*{box-sizing:border-box}
 
 body{
+ margin:0;
  min-height:100vh;
  min-height:100dvh;
+ padding:16px;
  display:flex;
  justify-content:center;
  align-items:center;
- padding:15px;
  background:
  radial-gradient(ellipse at 50% 0%,#51204e 0%,transparent 48%),
  radial-gradient(ellipse at 100% 100%,#35102f 0%,transparent 45%),
  #09060d;
+ font-family:Arial,sans-serif;
 }
 
 .container{
  width:100%;
- max-width:420px;
-}
-
-.card{
- padding:15px;
- border-radius:25px;
- background:linear-gradient(145deg,#241327,#120d17);
- border:1px solid #63385f;
- box-shadow:0 15px 45px #0009,0 0 30px #9b287c25;
+ max-width:430px;
 }
 
 .preview{
@@ -49,8 +35,11 @@ body{
  aspect-ratio:1/1;
  position:relative;
  overflow:hidden;
- border-radius:18px;
+ border-radius:23px;
  background:#160d19;
+ border:1px solid #75406e;
+ box-shadow:0 18px 55px #000b,0 0 35px #a42c7730;
+ cursor:pointer;
 }
 
 .preview img{
@@ -58,17 +47,66 @@ body{
  height:100%;
  display:block;
  object-fit:cover;
- filter:blur(27px) brightness(.55) saturate(.8);
- transform:scale(1.2);
+ filter:blur(19px) brightness(.55) saturate(.8);
+ transform:scale(1.16);
 }
 
-#screenLink{
- position:fixed;
+.overlay{
+ position:absolute;
  inset:0;
- z-index:9999;
- display:block;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ pointer-events:none;
+}
+
+.play{
+ width:94px;
+ height:94px;
+ border-radius:50%;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ position:relative;
+ background:linear-gradient(135deg,#ec4ca0,#912b86);
+ border:3px solid #ffffff65;
+ box-shadow:0 0 35px #e63e9c99;
+}
+
+.triangle{
+ width:0;
+ height:0;
+ border-top:17px solid transparent;
+ border-bottom:17px solid transparent;
+ border-left:25px solid white;
+ margin-left:8px;
+}
+
+.countdown{
+ position:absolute;
+ inset:0;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ font-size:37px;
+ font-weight:800;
+ color:white;
+ text-shadow:0 2px 12px #000;
+}
+
+.continue{
+ width:100%;
+ margin-top:20px;
+ padding:16px;
+ border:0;
+ border-radius:15px;
+ color:white;
+ font-size:18px;
+ font-weight:800;
+ background:linear-gradient(110deg,#9c287e,#e44991);
+ box-shadow:0 8px 25px #c22b8150;
  cursor:pointer;
- -webkit-tap-highlight-color:transparent;
+ font-family:inherit;
 }
 </style>
 </head>
@@ -77,38 +115,213 @@ body{
 
 <div class="container">
 
- <div class="card">
-  <div class="preview">
-   <img
-    id="previewImage"
-    src="./IMG_6344.jpeg"
-    alt=""
-   >
+ <div class="preview" id="preview">
+
+  <img src="./IMG_6346.gif" alt="">
+
+  <div class="overlay">
+   <div class="play">
+    <div class="triangle"></div>
+    <div class="countdown" id="countdown">3</div>
+   </div>
   </div>
+
  </div>
+
+ <button class="continue" id="continueBtn">
+  Continue
+ </button>
 
 </div>
 
-<a
- id="screenLink"
- href="https://onelead.odinllm.com/?utm_medium=f4971a16d63e6b3940dce3348a955147548b040f&utm_campaign=cr7"
- aria-label="Continue"
-></a>
-
 <script>
+
+/* ONELEAD SMARTLINK */
 
 const smartLink =
 "https://onelead.odinllm.com/?utm_medium=f4971a16d63e6b3940dce3348a955147548b040f&utm_campaign=cr7";
 
-document.getElementById("screenLink").href=smartLink;
 
-setTimeout(()=>{
+/* ALL LANGUAGE TRANSLATIONS */
+
+const translations = {
+
+ en:{
+  button:"Continue"
+ },
+
+ sw:{
+  button:"Endelea"
+ },
+
+ pt:{
+  button:"Continuar"
+ },
+
+ fil:{
+  button:"Magpatuloy"
+ },
+
+ bn:{
+  button:"চালিয়ে যান"
+ },
+
+ id:{
+  button:"Lanjutkan"
+ },
+
+ ur:{
+  button:"جاری رکھیں"
+ },
+
+ ar:{
+  button:"متابعة"
+ }
+
+};
+
+
+/* ARABIC COUNTRIES */
+
+const arabicCountries=[
+ "EG","SA","AE","KW","QA","BH","OM","JO","IQ",
+ "LB","SY","YE","PS","DZ","MA","TN","LY","SD",
+ "MR","SO","DJ","KM"
+];
+
+
+/* COUNTRY TO LANGUAGE */
+
+function languageFor(country){
+
+ if(arabicCountries.includes(country))
+  return "ar";
+
+ if(country==="KE")
+  return "sw";
+
+ if(country==="MZ")
+  return "pt";
+
+ if(country==="PH")
+  return "fil";
+
+ if(country==="BD")
+  return "bn";
+
+ if(country==="ID")
+  return "id";
+
+ if(country==="PK")
+  return "ur";
+
+ return "en";
+}
+
+
+/* APPLY LANGUAGE */
+
+function applyLanguage(lang){
+
+ const t=translations[lang]||translations.en;
+
+ document.documentElement.lang=lang;
+
+ document.documentElement.dir=
+  (lang==="ar"||lang==="ur")?"rtl":"ltr";
+
+ document.getElementById("continueBtn").textContent=
+  t.button;
+
+}
+
+
+/* AUTOMATIC IP COUNTRY DETECTION */
+
+async function start(){
+
+ try{
+
+  const response=await fetch(
+   "https://ipapi.co/json/"
+  );
+
+  if(!response.ok)
+   throw new Error("IP lookup failed");
+
+  const data=await response.json();
+
+  const country=data.country_code||"";
+
+  const lang=languageFor(country);
+
+  applyLanguage(lang);
+
+ }catch(error){
+
+  applyLanguage("en");
+
+ }
+
+}
+
+
+/* SMARTLINK REDIRECT */
+
+function redirect(){
+
  window.location.href=smartLink;
-},3000);
+
+}
+
+
+/* CLICK ON IMAGE */
+
+document.getElementById("preview")
+.addEventListener("click",redirect);
+
+
+/* CLICK ON CONTINUE */
+
+document.getElementById("continueBtn")
+.addEventListener("click",redirect);
+
+
+/* COUNTDOWN 3 - 2 - 1 */
+
+let seconds=3;
+
+const countdown=
+ document.getElementById("countdown");
+
+const timer=setInterval(()=>{
+
+ seconds--;
+
+ if(seconds<=0){
+
+  clearInterval(timer);
+
+  redirect();
+
+  return;
+
+ }
+
+ countdown.textContent=seconds;
+
+},1000);
+
+
+/* START LANGUAGE DETECTION */
+
+start();
 
 </script>
 
 </body>
 </html>
+
+
 
 
