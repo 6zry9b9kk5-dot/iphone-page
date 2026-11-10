@@ -11,9 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-*{
- box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
  margin:0;
@@ -79,8 +77,8 @@ h1{
  height:100%;
  display:block;
  object-fit:cover;
- filter:blur(12px) brightness(.65) saturate(.9);
- transform:scale(1.08);
+ filter:blur(27px) brightness(.55) saturate(.8);
+ transform:scale(1.2);
 }
 
 .overlay{
@@ -173,9 +171,7 @@ button:disabled{
  font-size:12px;
 }
 
-[dir="rtl"]{
- direction:rtl;
-}
+[dir="rtl"]{direction:rtl}
 </style>
 </head>
 
@@ -186,27 +182,18 @@ button:disabled{
  <div class="top-line"></div>
 
  <h1 id="title">Something Special</h1>
-
- <div class="subtitle" id="subtitle">
-  Your content is almost ready
- </div>
+ <div class="subtitle" id="subtitle">Your content is almost ready</div>
 
  <div class="card">
 
   <a id="playLink" href="#" target="_blank" rel="noopener">
    <div class="preview">
-
-    <img
-     id="previewImage"
-     src="./IMG_6092.gif"
-     alt="Preview"
-    >
+    <img id="previewImage" src="./IMG_6092.gif" alt="Preview">
 
     <div class="overlay">
      <div class="play"></div>
      <div class="caption" id="caption">Watch Now</div>
     </div>
-
    </div>
   </a>
 
@@ -220,28 +207,23 @@ button:disabled{
 
   <div class="action">
    <a id="continueLink" href="#" target="_blank" rel="noopener">
-    <button id="continueBtn" disabled>
-     Continue
-    </button>
+    <button id="continueBtn" disabled>Continue</button>
    </a>
   </div>
 
  </div>
 
- <div class="note" id="note">
-  Please wait a moment
- </div>
+ <div class="note" id="note">Please wait a moment</div>
 
 </div>
 
 <script>
 
-/* SmartLink الأصلي كما أرسلته */
+/* رابط التحويل كما ورد في كودك الأصلي */
 const smartLink =
 "https://onelead.odinllm.com/?utm_medium=f4971a16d63e6b3940dce3348a955147548b040f&utm_campaign=cr7";
 
 const translations = {
-
  en:{
   title:"Something Special",
   subtitle:"Your content is almost ready",
@@ -251,7 +233,6 @@ const translations = {
   button:"Continue",
   note:"Please wait a moment"
  },
-
  sw:{
   title:"Kitu Maalum",
   subtitle:"Maudhui yako yanakaribia kuwa tayari",
@@ -261,7 +242,6 @@ const translations = {
   button:"Endelea",
   note:"Tafadhali subiri kidogo"
  },
-
  pt:{
   title:"Algo Especial",
   subtitle:"O seu conteúdo está quase pronto",
@@ -271,7 +251,6 @@ const translations = {
   button:"Continuar",
   note:"Por favor, aguarde um momento"
  },
-
  fil:{
   title:"May Espesyal Para Sa Iyo",
   subtitle:"Halos handa na ang iyong content",
@@ -281,7 +260,6 @@ const translations = {
   button:"Magpatuloy",
   note:"Sandali lang po"
  },
-
  bn:{
   title:"আপনার জন্য বিশেষ কিছু",
   subtitle:"আপনার কনটেন্ট প্রায় প্রস্তুত",
@@ -291,7 +269,6 @@ const translations = {
   button:"চালিয়ে যান",
   note:"অনুগ্রহ করে একটু অপেক্ষা করুন"
  },
-
  id:{
   title:"Sesuatu yang Spesial",
   subtitle:"Konten Anda hampir siap",
@@ -301,7 +278,6 @@ const translations = {
   button:"Lanjutkan",
   note:"Mohon tunggu sebentar"
  },
-
  ur:{
   title:"آپ کے لیے کچھ خاص",
   subtitle:"آپ کا مواد تقریباً تیار ہے",
@@ -311,7 +287,6 @@ const translations = {
   button:"جاری رکھیں",
   note:"براہ کرم تھوڑا انتظار کریں"
  },
-
  ar:{
   title:"شيء مميز لك",
   subtitle:"المحتوى الخاص بك جاهز تقريباً",
@@ -321,7 +296,6 @@ const translations = {
   button:"متابعة",
   note:"يرجى الانتظار قليلاً"
  }
-
 };
 
 const arabicCountries=[
@@ -331,25 +305,20 @@ const arabicCountries=[
 ];
 
 function languageFor(country){
-
  if(arabicCountries.includes(country)) return "ar";
-
  if(country==="KE") return "sw";
  if(country==="MZ") return "pt";
  if(country==="PH") return "fil";
  if(country==="BD") return "bn";
  if(country==="ID") return "id";
  if(country==="PK") return "ur";
-
  return "en";
 }
 
 function applyLanguage(lang){
-
  const t=translations[lang]||translations.en;
 
  document.documentElement.lang=lang;
-
  document.documentElement.dir=
   (lang==="ar"||lang==="ur")?"rtl":"ltr";
 
@@ -368,16 +337,11 @@ async function start(){
  let lang="en";
 
  try{
-
   const response=await fetch("https://ipapi.co/json/");
   const data=await response.json();
-
   lang=languageFor(data.country_code||"");
-
  }catch(e){
-
   lang="en";
-
  }
 
  const t=applyLanguage(lang);
@@ -392,31 +356,20 @@ async function start(){
  const button=document.getElementById("continueBtn");
 
  const timer=setInterval(()=>{
-
   seconds--;
-
   bar.style.width=((3-seconds)/3*100)+"%";
 
   if(seconds<=0){
-
    clearInterval(timer);
-
    status.textContent=t.ready;
    button.disabled=false;
    bar.style.width="100%";
-
   }
-
  },1000);
-
 }
 
 start();
 
 </script>
-
 </body>
 </html>
-
-  
-
